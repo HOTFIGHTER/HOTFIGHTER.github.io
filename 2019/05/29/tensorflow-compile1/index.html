@@ -104,13 +104,13 @@
 <meta property="og:site_name" content="决斗者的学习博客">
 <meta property="og:description" content="TensorFlow源码编译TensorFlow作为Google在AI领域的基础运行环境，如今作为大热门被广泛研究，这里使用Mac对TensorFlow源码进行编译。1 安装必要的软件1.1 安装JDK 8JDK 8 can be downloaded from Oracle’s JDK Page :[下载链接] (http://www.oracle.com/technetwork/java/ja">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/tensorflow-compile/Image1.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/tensorflow-compile/Image2.jpg">
-<meta property="og:updated_time" content="2019-05-29T15:51:59.738Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/Image1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/Image2.jpg">
+<meta property="og:updated_time" content="2019-05-29T15:57:55.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow源码编译">
 <meta name="twitter:description" content="TensorFlow源码编译TensorFlow作为Google在AI领域的基础运行环境，如今作为大热门被广泛研究，这里使用Mac对TensorFlow源码进行编译。1 安装必要的软件1.1 安装JDK 8JDK 8 can be downloaded from Oracle’s JDK Page :[下载链接] (http://www.oracle.com/technetwork/java/ja">
-<meta name="twitter:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/tensorflow-compile/Image1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/Image1.jpg">
 
 
 
@@ -435,7 +435,7 @@
                 
               
 
-              <time title="创建时间：2019-05-29 20:25:36 / 修改时间：23:51:59" itemprop="dateCreated datePublished" datetime="2019-05-29T20:25:36+08:00">2019-05-29</time>
+              <time title="创建时间：2019-05-29 20:25:36 / 修改时间：23:57:55" itemprop="dateCreated datePublished" datetime="2019-05-29T20:25:36+08:00">2019-05-29</time>
             
 
             
@@ -479,7 +479,7 @@
 <p>Step 3: Run the installer<br>Run the Bazel installer as follows:<br>chmod +x bazel-<version>-installer-darwin-x86_64.sh<br>./bazel-<version>-installer-darwin-x86_64.sh –user<br>The –user flag installs Bazel to the $HOME/bin directory on your system and sets the .bazelrc<br>path to $HOME/.bazelrc. Use the –help command to see additional installation options.</version></version></p>
 <p>Step 4: Set up your environment<br>If you ran the Bazel installer with the –user flag as above, the Bazel executable is<br>installed in your $HOME/bin directory. It’s a good idea to add this directory to your default<br>paths, as follows:<br>export PATH=”PATH:PATH:PATH:HOME/bin”<br>You can also add this command to your ~/.bashrc or ~/.profile file.<br>All set! You can confirm Bazel is installed successfully by running the following command:</p>
 <p>bazel version</p>
-<p>1.4 Xcode安装<br>由于在Mac编译tensorflow需要Xcode环境。<br>首先打开连接 <a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">https://developer.apple.com/download/more/</a> 进入页面<br><img src="/2019/05/29/tensorflow-compile1/tensorflow-compile/Image1.jpg" alt="Xcode下载界面"><br>在搜索框中输入Xcode 回车搜索，如下图所示：<br><img src="/2019/05/29/tensorflow-compile1/tensorflow-compile/Image2.jpg" alt="Xcode下载界面"><br>找到所需的版本，点击+打开，查看详情，单击进行下载。<br>解压安装。<br>2 安装tensorflow<br>2.1 下载官方的tensorflow源码<br>$ git clone <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow</a><br>2.2 配置<br>下载完成之后，在用户目录下生成一个tensorflow的目录，进入这个目录。<br>./configure<br>进行配置，在配置过程中会出现一系列的问题，通常情况下没有特殊的要求，一般全部都选择n。<br>3 编译<br>配置完成后就是编译过程了，输入下面命令(输入此命令后你会发现你的电脑呼呼作响，并且会花较长时间来编译)：<br>bazel clean –expunge<br>sudo xcode-select -s /Applications/Xcode.app/Contents/Developer 这个选择Xcode的目录很重要<br>sudo xcodebuild -license<br>bazel clean –expunge<br>bazel build -c opt //tensorflow:libtensorflow_cc.so<br>4 结果<br>最后在bazel-bin的tensorflow下生成libtensorflow_cc.so和libtensorflow_framework.so文件。</p>
+<p>1.4 Xcode安装<br>由于在Mac编译tensorflow需要Xcode环境。<br>首先打开连接 <a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">https://developer.apple.com/download/more/</a> 进入页面<br><img src="/2019/05/29/tensorflow-compile1/Image1.jpg" alt="Xcode下载界面"><br>在搜索框中输入Xcode 回车搜索，如下图所示：<br><img src="/2019/05/29/tensorflow-compile1/Image2.jpg" alt="Xcode下载界面"><br>找到所需的版本，点击+打开，查看详情，单击进行下载。<br>解压安装。<br>2 安装tensorflow<br>2.1 下载官方的tensorflow源码<br>$ git clone <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow</a><br>2.2 配置<br>下载完成之后，在用户目录下生成一个tensorflow的目录，进入这个目录。<br>./configure<br>进行配置，在配置过程中会出现一系列的问题，通常情况下没有特殊的要求，一般全部都选择n。<br>3 编译<br>配置完成后就是编译过程了，输入下面命令(输入此命令后你会发现你的电脑呼呼作响，并且会花较长时间来编译)：<br>bazel clean –expunge<br>sudo xcode-select -s /Applications/Xcode.app/Contents/Developer 这个选择Xcode的目录很重要<br>sudo xcodebuild -license<br>bazel clean –expunge<br>bazel build -c opt //tensorflow:libtensorflow_cc.so<br>4 结果<br>最后在bazel-bin的tensorflow下生成libtensorflow_cc.so和libtensorflow_framework.so文件。</p>
 
       
     </div>
