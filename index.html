@@ -389,7 +389,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/tensorflow-compile/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/tensorflow-compile1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="决斗者">
@@ -409,7 +409,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/29/tensorflow-compile/" class="post-title-link" itemprop="url">TensorFlowԴ�����</a>
+                <a href="/2019/05/29/tensorflow-compile1/" class="post-title-link" itemprop="url">TensorFlowԴ�����</a>
               
             
           </h1>
@@ -480,7 +480,7 @@
 <p>Step 3: Run the installer<br>Run the Bazel installer as follows:<br>chmod +x bazel-<version>-installer-darwin-x86_64.sh<br>./bazel-<version>-installer-darwin-x86_64.sh –user<br>The –user flag installs Bazel to the $HOME/bin directory on your system and sets the .bazelrc<br>path to $HOME/.bazelrc. Use the –help command to see additional installation options.</version></version></p>
 <p>Step 4: Set up your environment<br>If you ran the Bazel installer with the –user flag as above, the Bazel executable is<br>installed in your $HOME/bin directory. It��s a good idea to add this directory to your default<br>paths, as follows:<br>export PATH=”PATH:PATH:PATH:HOME/bin”<br>You can also add this command to your ~/.bashrc or ~/.profile file.<br>All set! You can confirm Bazel is installed successfully by running the following command:</p>
 <p>bazel version</p>
-<p>1.4 Xcode��װ<br>������Mac����tensorflow��ҪXcode������<br>���ȴ����� <a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">https://developer.apple.com/download/more/</a> ����ҳ��<br><img src="/2019/05/29/tensorflow-compile/Image1.jpg" alt="Xcode���ؽ���"><br>��������������Xcode �س�����������ͼ��ʾ��<br><img src="/2019/05/29/tensorflow-compile/Image2.jpg" alt="Xcode���ؽ���"><br>�ҵ�����İ汾�����+�򿪣��鿴���飬�����������ء�<br>��ѹ��װ��<br>2 ��װtensorflow<br>2.1 ���عٷ���tensorflowԴ��<br>$ git clone <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow</a><br>2.2 ����<br>�������֮�����û�Ŀ¼������һ��tensorflow��Ŀ¼���������Ŀ¼��<br>./configure<br>�������ã������ù����л����һϵ�е����⣬ͨ�������û�������Ҫ��һ��ȫ����ѡ��n��<br>3 ����<br>������ɺ���Ǳ�������ˣ�������������(������������ᷢ����ĵ��Ժ������죬���һỨ�ϳ�ʱ��������)��<br>bazel clean –expunge<br>sudo xcode-select -s /Applications/Xcode.app/Contents/Developer ���ѡ��Xcode��Ŀ¼����Ҫ<br>sudo xcodebuild -license<br>bazel clean –expunge<br>bazel build -c opt //tensorflow:libtensorflow_cc.so<br>4 ���<br>�����bazel-bin��tensorflow������libtensorflow_cc.so��libtensorflow_framework.so�ļ���</p>
+<p>1.4 Xcode��װ<br>������Mac����tensorflow��ҪXcode������<br>���ȴ����� <a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">https://developer.apple.com/download/more/</a> ����ҳ��<br><img src="/2019/05/29/tensorflow-compile1/tensorflow-compile/Image1.jpg" alt="Xcode���ؽ���"><br>��������������Xcode �س�����������ͼ��ʾ��<br><img src="/2019/05/29/tensorflow-compile1/tensorflow-compile/Image2.jpg" alt="Xcode���ؽ���"><br>�ҵ�����İ汾�����+�򿪣��鿴���飬�����������ء�<br>��ѹ��װ��<br>2 ��װtensorflow<br>2.1 ���عٷ���tensorflowԴ��<br>$ git clone <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow</a><br>2.2 ����<br>�������֮�����û�Ŀ¼������һ��tensorflow��Ŀ¼���������Ŀ¼��<br>./configure<br>�������ã������ù����л����һϵ�е����⣬ͨ�������û�������Ҫ��һ��ȫ����ѡ��n��<br>3 ����<br>������ɺ���Ǳ�������ˣ�������������(������������ᷢ����ĵ��Ժ������죬���һỨ�ϳ�ʱ��������)��<br>bazel clean –expunge<br>sudo xcode-select -s /Applications/Xcode.app/Contents/Developer ���ѡ��Xcode��Ŀ¼����Ҫ<br>sudo xcodebuild -license<br>bazel clean –expunge<br>bazel build -c opt //tensorflow:libtensorflow_cc.so<br>4 ���<br>�����bazel-bin��tensorflow������libtensorflow_cc.so��libtensorflow_framework.so�ļ���</p>
 
           
         
