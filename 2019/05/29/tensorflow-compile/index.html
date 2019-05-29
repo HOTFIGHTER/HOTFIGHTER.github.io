@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pokeball_menu.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pokeball_menu.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="TensorFlowԴ�����TensorFlow��ΪGoogle��AI����Ļ������л����������Ϊ�����ű��㷺�о�������ʹ��Mac��TensorFlowԴ����б��롣1 ��װ��Ҫ������1.1 ��װJDK 8JDK 8 can be downloaded from Oracle��s JDK Page :[��������] (http:/">
+<meta name="keywords" content="Java、C++、Python、TensorFlow、Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlowԴ�����">
+<meta property="og:url" content="http://yoursite.com/2019/05/29/tensorflow-compile/index.html">
+<meta property="og:site_name" content="决斗者的学习博客">
+<meta property="og:description" content="TensorFlowԴ�����TensorFlow��ΪGoogle��AI����Ļ������л����������Ϊ�����ű��㷺�о�������ʹ��Mac��TensorFlowԴ����б��롣1 ��װ��Ҫ������1.1 ��װJDK 8JDK 8 can be downloaded from Oracle��s JDK Page :[��������] (http:/">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/05/29/tensorflow-compile/Image1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/29/tensorflow-compile/Image2.jpg">
+<meta property="og:updated_time" content="2019-05-29T15:37:25.364Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TensorFlowԴ�����">
+<meta name="twitter:description" content="TensorFlowԴ�����TensorFlow��ΪGoogle��AI����Ļ������л����������Ϊ�����ű��㷺�о�������ʹ��Mac��TensorFlowԴ����б��롣1 ��װ��Ҫ������1.1 ��װJDK 8JDK 8 can be downloaded from Oracle��s JDK Page :[��������] (http:/">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/29/tensorflow-compile/Image1.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/05/29/tensorflow-compile/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>TensorFlowԴ����� | 决斗者的学习博客</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6697a1363f65085bd28b3b4b490bdd74";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">决斗者的学习博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">记录学习的技能和遇到的问题</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/tensorflow-compile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="决斗者">
+      <meta itemprop="description" content="记录学习的点滴，每天一小步">
+      <meta itemprop="image" content="/images/yu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="决斗者的学习博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TensorFlowԴ�����
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-29 20:25:36 / 修改时间：23:37:25" itemprop="dateCreated datePublished" datetime="2019-05-29T20:25:36+08:00">2019-05-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="TensorFlowԴ�����"><a href="#TensorFlowԴ�����" class="headerlink" title="TensorFlowԴ�����"></a>TensorFlowԴ�����</h4><p>TensorFlow��ΪGoogle��AI����Ļ������л����������Ϊ�����ű��㷺�о�������ʹ��Mac��TensorFlowԴ����б��롣<br>1 ��װ��Ҫ������<br>1.1 ��װJDK 8<br>JDK 8 can be downloaded from Oracle��s JDK Page :<br>[��������] (<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)��" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)��</a><br>Look for ��Mac OS X�� under ��Java SE Development Kit��.<br>This will download a DMG image with an install wizard��<br>1.2 ��װHomebrew<br>Install Homebrew on macOS (OS X)��Installing Homebrew is a one-time setup:<br>$ ruby -e “(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</a><br>1.3 ��װָ���汾Bazel: ��װ��װGoogle�Լҵı��빤��bazel��<br>mac����õİ취����ֱ��ʹ��brew��װ�ˣ� Install Bazel Homebrew Package��<br>brew install bazel<br>You are all set. You can confirm Bazel is installed successfully by running bazel version.<br>You can later upgrade to newer version of Bazel with brew upgrade bazel.<br>���ڲ�ͬ�汾��TensorFlowԴ�����Bazel�汾���Լ���Ҫ��<br>����ͨ�����·�ʽ��װָ���汾��Bazel:<br>�������<a href="https://docs.bazel.build/versions/master/install-os-x.html" target="_blank" rel="noopener">https://docs.bazel.build/versions/master/install-os-x.html</a><br>ִ�����<br>Step 1: Install Xcode command line tools<br>Xcode can be downloaded from the Apple Developer Site (this link redirects to their App Store).<br>For objc_<em> and ios_</em> rule support, you must have Xcode 6.1 or later with iOS SDK 8.1 installed on your system.<br>Once Xcode is installed, accept the license agreement for all users with the following command:<br>sudo xcodebuild -license accept</p>
+<p>Step 2: Download the Bazel installer<br>Next, download the Bazel binary installer named bazel-<version>-installer-darwin-x86_64.sh<br>from the Bazel releases page on GitHub.</version></p>
+<p>Step 3: Run the installer<br>Run the Bazel installer as follows:<br>chmod +x bazel-<version>-installer-darwin-x86_64.sh<br>./bazel-<version>-installer-darwin-x86_64.sh –user<br>The –user flag installs Bazel to the $HOME/bin directory on your system and sets the .bazelrc<br>path to $HOME/.bazelrc. Use the –help command to see additional installation options.</version></version></p>
+<p>Step 4: Set up your environment<br>If you ran the Bazel installer with the –user flag as above, the Bazel executable is<br>installed in your $HOME/bin directory. It��s a good idea to add this directory to your default<br>paths, as follows:<br>export PATH=”PATH:PATH:PATH:HOME/bin”<br>You can also add this command to your ~/.bashrc or ~/.profile file.<br>All set! You can confirm Bazel is installed successfully by running the following command:</p>
+<p>bazel version</p>
+<p>1.4 Xcode��װ<br>������Mac����tensorflow��ҪXcode������<br>���ȴ����� <a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">https://developer.apple.com/download/more/</a> ����ҳ��<br><img src="/2019/05/29/tensorflow-compile/Image1.jpg" alt="Xcode���ؽ���"><br>��������������Xcode �س�����������ͼ��ʾ��<br><img src="/2019/05/29/tensorflow-compile/Image2.jpg" alt="Xcode���ؽ���"><br>�ҵ�����İ汾�����+�򿪣��鿴���飬�����������ء�<br>��ѹ��װ��<br>2 ��װtensorflow<br>2.1 ���عٷ���tensorflowԴ��<br>$ git clone <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow</a><br>2.2 ����<br>�������֮�����û�Ŀ¼������һ��tensorflow��Ŀ¼���������Ŀ¼��<br>./configure<br>�������ã������ù����л����һϵ�е����⣬ͨ�������û�������Ҫ��һ��ȫ����ѡ��n��<br>3 ����<br>������ɺ���Ǳ�������ˣ�������������(������������ᷢ����ĵ��Ժ������죬���һỨ�ϳ�ʱ��������)��<br>bazel clean –expunge<br>sudo xcode-select -s /Applications/Xcode.app/Contents/Developer ���ѡ��Xcode��Ŀ¼����Ҫ<br>sudo xcodebuild -license<br>bazel clean –expunge<br>bazel build -c opt //tensorflow:libtensorflow_cc.so<br>4 ���<br>�����bazel-bin��tensorflow������libtensorflow_cc.so��libtensorflow_framework.so�ļ���</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/18/c-language-learning/" rel="next" title="C、C++知识点总结">
+                <i class="fa fa-chevron-left"></i> C、C++知识点总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/yu.jpg" alt="决斗者">
+            
+              <p class="site-author-name" itemprop="name">决斗者</p>
+              <div class="site-description motion-element" itemprop="description">记录学习的点滴，每天一小步</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TensorFlowԴ�����"><span class="nav-number">1.</span> <span class="nav-text">TensorFlowԴ�����</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">决斗者</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+   <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277620454'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277620454%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
