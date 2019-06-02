@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="####FFmpeg基础知识和常用结构体 最近公司要用到FFmpeg的知识，所以看了雷神之前的博客，感触颇深，感谢雷神无私的分享。这里对一些基础结构体做了些记录，视频播放器播放一个互联网上的视频文件，需要经过以下几个步骤：解协议，解封装，解码视音频，视音频同步。如果播放本地文件则不需要解协议，为以下几个步骤：解封装，解码视音频，视音频同步。 1 解协议的作用，就是将流媒体协议的数据，解析为标准的相">
+  <meta name="description" content="FFmpeg基础知识和常用结构体最近公司要用到FFmpeg的知识，所以看了雷神之前的博客，感触颇深，感谢雷神无私的分享。这里对一些基础结构体做了些记录，视频播放器播放一个互联网上的视频文件，需要经过以下几个步骤：解协议，解封装，解码视音频，视音频同步。如果播放本地文件则不需要解协议，为以下几个步骤：解封装，解码视音频，视音频同步。 1 解协议的作用，就是将流媒体协议的数据，解析为标准的相应的封装格">
 <meta name="keywords" content="Java、C++、Python、TensorFlow、Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FFmpeg基础知识和常用结构体">
 <meta property="og:url" content="http://yoursite.com/2019/06/02/ffmpeg-base/index.html">
 <meta property="og:site_name" content="决斗者的学习博客">
-<meta property="og:description" content="####FFmpeg基础知识和常用结构体 最近公司要用到FFmpeg的知识，所以看了雷神之前的博客，感触颇深，感谢雷神无私的分享。这里对一些基础结构体做了些记录，视频播放器播放一个互联网上的视频文件，需要经过以下几个步骤：解协议，解封装，解码视音频，视音频同步。如果播放本地文件则不需要解协议，为以下几个步骤：解封装，解码视音频，视音频同步。 1 解协议的作用，就是将流媒体协议的数据，解析为标准的相">
+<meta property="og:description" content="FFmpeg基础知识和常用结构体最近公司要用到FFmpeg的知识，所以看了雷神之前的博客，感触颇深，感谢雷神无私的分享。这里对一些基础结构体做了些记录，视频播放器播放一个互联网上的视频文件，需要经过以下几个步骤：解协议，解封装，解码视音频，视音频同步。如果播放本地文件则不需要解协议，为以下几个步骤：解封装，解码视音频，视音频同步。 1 解协议的作用，就是将流媒体协议的数据，解析为标准的相应的封装格">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/06/02/ffmpeg-base/ffmpeg-base1.jpeg">
 <meta property="og:image" content="http://yoursite.com/2019/06/02/ffmpeg-base/ffmpeg-base2.jpeg">
-<meta property="og:updated_time" content="2019-06-02T15:32:44.367Z">
+<meta property="og:updated_time" content="2019-06-02T15:38:55.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FFmpeg基础知识和常用结构体">
-<meta name="twitter:description" content="####FFmpeg基础知识和常用结构体 最近公司要用到FFmpeg的知识，所以看了雷神之前的博客，感触颇深，感谢雷神无私的分享。这里对一些基础结构体做了些记录，视频播放器播放一个互联网上的视频文件，需要经过以下几个步骤：解协议，解封装，解码视音频，视音频同步。如果播放本地文件则不需要解协议，为以下几个步骤：解封装，解码视音频，视音频同步。 1 解协议的作用，就是将流媒体协议的数据，解析为标准的相">
+<meta name="twitter:description" content="FFmpeg基础知识和常用结构体最近公司要用到FFmpeg的知识，所以看了雷神之前的博客，感触颇深，感谢雷神无私的分享。这里对一些基础结构体做了些记录，视频播放器播放一个互联网上的视频文件，需要经过以下几个步骤：解协议，解封装，解码视音频，视音频同步。如果播放本地文件则不需要解协议，为以下几个步骤：解封装，解码视音频，视音频同步。 1 解协议的作用，就是将流媒体协议的数据，解析为标准的相应的封装格">
 <meta name="twitter:image" content="http://yoursite.com/2019/06/02/ffmpeg-base/ffmpeg-base1.jpeg">
 
 
@@ -435,7 +435,7 @@
                 
               
 
-              <time title="创建时间：2019-06-02 23:17:50 / 修改时间：23:32:44" itemprop="dateCreated datePublished" datetime="2019-06-02T23:17:50+08:00">2019-06-02</time>
+              <time title="创建时间：2019-06-02 23:17:50 / 修改时间：23:38:55" itemprop="dateCreated datePublished" datetime="2019-06-02T23:17:50+08:00">2019-06-02</time>
             
 
             
@@ -474,20 +474,20 @@
       
 
       
-        <p>####FFmpeg基础知识和常用结构体</p>
-<p>最近公司要用到FFmpeg的知识，所以看了雷神之前的博客，感触颇深，感谢雷神无私的分享。<br>这里对一些基础结构体做了些记录，视频播放器播放一个互联网上的视频文件，需要经过以下<br>几个步骤：解协议，解封装，解码视音频，视音频同步。如果播放本地文件则不需要解协议，<br>为以下几个步骤：解封装，解码视音频，视音频同步。<br><img src="/2019/06/02/ffmpeg-base/ffmpeg-base1.jpeg" alt="面想对象的设计"></p>
+        <h4 id="FFmpeg基础知识和常用结构体"><a href="#FFmpeg基础知识和常用结构体" class="headerlink" title="FFmpeg基础知识和常用结构体"></a>FFmpeg基础知识和常用结构体</h4><p>最近公司要用到FFmpeg的知识，所以看了雷神之前的博客，感触颇深，感谢雷神无私的分享。<br>这里对一些基础结构体做了些记录，视频播放器播放一个互联网上的视频文件，需要经过以下<br>几个步骤：解协议，解封装，解码视音频，视音频同步。如果播放本地文件则不需要解协议，<br>为以下几个步骤：解封装，解码视音频，视音频同步。<br><img src="/2019/06/02/ffmpeg-base/ffmpeg-base1.jpeg" alt="面想对象的设计"></p>
 <p>1 解协议的作用，就是将流媒体协议的数据，解析为标准的相应的封装格式数据。视音频在网<br>络上传播的时候，常常采用各种流媒体协议，例如HTTP，RTMP，或是MMS等等。这些协议在传输<br>视音频数据的同时，也会传输一些信令数据。这些信令数据包括对播放的控制（播放，暂停，<br>停止），或者对网络状态的描述等。解协议的过程中会去除掉信令数据而只保留视音频数据。<br>例如，采用RTMP协议传输的数据，经过解协议操作后，输出FLV格式的数据。</p>
 <p>2 解封装的作用，就是将输入的封装格式的数据，分离成为音频流压缩编码数据和视频流压缩<br>编码数据。封装格式种类很多，例如MP4，MKV，RMVB，TS，FLV，AVI等等，它的作用就是将已经<br>压缩编码的视频数据和音频数据按照一定的格式放到一起。例如，FLV格式的数据，经过解封装<br>操作后，输出H.264编码的视频码流和AAC编码的音频码流。</p>
 <p>3 解码的作用，就是将视频/音频压缩编码数据，解码成为非压缩的视频/音频原始数据。音频的<br>压缩编码标准包含AAC，MP3，AC-3等等，视频的压缩编码标准则包含H.264，MPEG2，VC-1等等。<br>解码是整个系统中最重要也是最复杂的一个环节。通过解码，压缩编码的视频数据输出成为非压<br>缩的颜色数据，例如YUV420P，RGB等等；压缩编码的音频数据输出成为非压缩的音频抽样数据，<br>例如PCM数据</p>
 <p>4 视音频同步的作用，就是根据解封装模块处理过程中获取到的参数信息，同步解码出来的视频<br>和音频数据，并将视频音频数据送至系统的显卡和声卡播放出来。</p>
 <p>各大数据结构体之间的关系：<br><img src="/2019/06/02/ffmpeg-base/ffmpeg-base2.jpeg" alt="面想对象的设计"></p>
-<p>主要数据结构：<br>AVFrame是包含码流参数较多的结构体。AVFrame结构体一般用于存储原始数据（即非压缩数据，<br>例如对视频来说是YUV，RGB，对音频来说是PCM），此外还包含了一些相关的信息。比如说，解码<br>的时候存储了宏块类型表，QP表，运动矢量表等数据。编码的时候也存储了相关的数据。因此在<br>使用FFMPEG进行码流分析的时候，AVFrame是一个很重要的结构体。</p>
+<p>主要数据结构：</p>
+<h4 id="AVFrame是包含码流参数较多的结构体。"><a href="#AVFrame是包含码流参数较多的结构体。" class="headerlink" title="AVFrame是包含码流参数较多的结构体。"></a>AVFrame是包含码流参数较多的结构体。</h4><p>AVFrame结构体一般用于存储原始数据（即非压缩数据，<br>例如对视频来说是YUV，RGB，对音频来说是PCM），此外还包含了一些相关的信息。比如说，解码<br>的时候存储了宏块类型表，QP表，运动矢量表等数据。编码的时候也存储了相关的数据。因此在<br>使用FFMPEG进行码流分析的时候，AVFrame是一个很重要的结构体。</p>
 <p>主要变量的作用：<br>uint8_t <em>data[AV_NUM_DATA_POINTERS]：解码后原始数据（对视频来说是YUV，RGB，对音频来说<br>是PCM）<br>int linesize[AV_NUM_DATA_POINTERS]：data中“一行”数据的大小。注意：未必等于图像的宽，一<br>般大于图像的宽。<br>int width, height：视频帧宽和高（1920x1080,1280x720…）<br>int nb_samples：音频的一个AVFrame中可能包含多个音频帧，在此标记包含了几个<br>int format：解码后原始数据类型（YUV420，YUV422，RGB24…）<br>int key_frame：是否是关键帧<br>enum AVPictureType pict_type：帧类型（I,B,P…）<br>AVRational sample_aspect_ratio：宽高比（16:9，4:3…）<br>int64_t pts：显示时间戳<br>int coded_picture_number：编码帧序号<br>int display_picture_number：显示帧序号<br>int8_t </em>qscale_table：QP表<br>uint8_t <em>mbskip_table：跳过宏块表<br>int16_t (</em>motion_val[2])[2]：运动矢量表<br>uint32_t <em>mb_type：宏块类型表<br>short </em>dct_coeff：DCT系数，这个没有提取过<br>int8_t <em>ref_index[2]：运动估计参考帧列表（貌似H.264这种比较新的标准才会涉及到多参考帧）<br>int interlaced_frame：是否是隔行扫描<br>uint8_t motion_subsample_log2：一个宏块中的运动矢量采样个数，取log的<br>1.data[]:<br>对于packed格式的数据（例如RGB24），会存到data[0]里面。<br>对于planar格式的数据（例如YUV420P），则会分开成data[0]，data[1]，data[2]…（YUV420P中<br>data[0]存Y，data[1]存U，data[2]存V)。<br>2.pict_type:<br>enum AVPictureType {<br>    AV_PICTURE_TYPE_NONE = 0, ///&lt; Undefined<br>    AV_PICTURE_TYPE_I,     ///&lt; Intra<br>    AV_PICTURE_TYPE_P,     ///&lt; Predicted<br>    AV_PICTURE_TYPE_B,     ///&lt; Bi-dir predicted<br>    AV_PICTURE_TYPE_S,     ///&lt; S(GMC)-VOP MPEG4<br>    AV_PICTURE_TYPE_SI,    ///&lt; Switching Intra<br>    AV_PICTURE_TYPE_SP,    ///&lt; Switching Predicted<br>    AV_PICTURE_TYPE_BI,    ///&lt; BI type<br>};<br>3.sample_aspect_ratio:<br>宽高比是一个分数，FFMPEG中用AVRational表达分数：<br>typedef struct AVRational{<br>int num; ///&lt; numerator<br>int den; ///&lt; denominator<br>} AVRational<br>4.qscale_table:<br>QP表指向一块内存，里面存储的是每个宏块的QP值。宏块的标号是从左往右，一行一行的来的。每个宏块<br>对应1个QP。<br>qscale_table[0]就是第1行第1列宏块的QP值；qscale_table[1]就是第1行第2列宏块的QP值；qscale_table[2]<br>就是第1行第3列宏块的QP值。以此类推…<br>5.motion_subsample_log2:<br>1个运动矢量所能代表的画面大小（用宽或者高表示，单位是像素），注意，这里取了log2。<br>即1个运动矢量代表16x16的画面的时候，该值取4；1个运动矢量代表8x8的画面的时候，该值取3…以此类推<br>6.motion_val:<br>运动矢量表存储了一帧视频中的所有运动矢量。<br>int16_t (</em>motion_val[2])[2];<br>7.mb_type:<br>宏块类型表存储了一帧视频中的所有宏块的类型。其存储方式和QP表差不多。只不过其是uint32类型的，而<br>QP表是uint8类型的。每个宏块对应一个宏块类型变量。<br>AVFormatContext是包含码流参数较多的结构体。它是FFMPEG解封装（flv，mp4，rmvb，avi）功能的结构体.<br>struct AVInputFormat <em>iformat：输入数据的封装格式<br>AVIOContext </em>pb：输入数据的缓存<br>unsigned int nb_streams：视音频流的个数<br>AVStream *<em>streams：视音频流<br>char filename[1024]：文件名<br>int64_t duration：时长（单位：微秒us，转换为秒需要除以1000000）<br>int bit_rate：比特率（单位bps，转换为kbps需要除以1000）<br>AVDictionary </em>metadata：元数据<br>视频的原数据（metadata）信息可以通过AVDictionary获取。元数据存储在AVDictionaryEntry结构体中，<br>typedef struct AVDictionaryEntry {<br>char <em>key;<br>char </em>value;<br>} AVDictionaryEntry;</p>
-<p>AVCodecContext编解码上下文：<br>enum AVMediaType codec_type：编解码器的类型（视频，音频…）<br>struct AVCodec  <em>codec：采用的解码器AVCodec（H.264,MPEG2…）<br>int bit_rate：平均比特率<br>uint8_t </em>extradata; int extradata_size：针对特定编码器包含的附加信息（例如对于H.264解码器来说，<br>存储SPS，PPS等）<br>AVRational time_base：根据该参数，可以把PTS转化为实际的时间（单位为秒s）<br>int width, height：如果是视频的话，代表宽和高<br>int refs：运动估计参考帧的个数（H.264的话会有多帧，MPEG2这类的一般就没有了）<br>int sample_rate：采样率（音频）<br>int channels：声道数（音频）<br>enum AVSampleFormat sample_fmt：采样格式<br>int profile：型（H.264里面就有，其他编码标准应该也有）</p>
-<p>AVIOContext是FFmpeg管理输入输出数据的结构体：<br>unsigned char <em>buffer：缓存开始位置<br>int buffer_size：缓存大小（默认32768）<br>unsigned char </em>buf_ptr：当前指针读取到的位置<br>unsigned char <em>buf_end：缓存结束的位置<br>void </em>opaque：URLContext结构体</p>
-<p>AVCodec是存储编解码器信息的结构体：<br>const char <em>name：编解码器的名字，比较短<br>const char </em>long_name：编解码器的名字，全称，比较长<br>enum AVMediaType type：指明了类型，是视频，音频，还是字幕<br>enum AVCodecID id：ID，不重复<br>const AVRational <em>supported_framerates：支持的帧率（仅视频）<br>const enum AVPixelFormat </em>pix_fmts：支持的像素格式（仅视频）<br>const int <em>supported_samplerates：支持的采样率（仅音频）<br>const enum AVSampleFormat </em>sample_fmts：支持的采样格式（仅音频）<br>const uint64_t *channel_layouts：支持的声道数（仅音频）<br>int priv_data_size：私有数据的大小</p>
-<p>AVStream存储每个视频/音频流信息的结构体：<br>int index：标识该视频/音频流<br>AVCodecContext <em>codec：指向该视频/音频流的AVCodecContext（它们是一一对应的关系）<br>AVRational time_base：时基。通过该值可以把PTS，DTS转化为真正的时间。FFMPEG其他<br>结构体中也有这个字段，但是根据我的经验，只有AVStream中的time_base是可用的。<br>PTS</em>time_base=真正的时间<br>int64_t duration：该视频/音频流长度<br>AVDictionary *metadata：元数据信息<br>AVRational avg_frame_rate：帧率（注：对视频来说，这个挺重要的）<br>AVPacket attached_pic：附带的图片。比如说一些MP3，AAC音频文件附带的专辑封面。</p>
-<p>AVPacket是存储压缩编码数据相关信息的结构体：<br>uint8_t *data：压缩编码的数据。<br>int   size：data的大小<br>int64_t pts：显示时间戳<br>int64_t dts：解码时间戳<br>int   stream_index：标识该AVPacket所属的视频/音频流。</p>
+<h4 id="AVCodecContext编解码上下文："><a href="#AVCodecContext编解码上下文：" class="headerlink" title="AVCodecContext编解码上下文："></a>AVCodecContext编解码上下文：</h4><p>enum AVMediaType codec_type：编解码器的类型（视频，音频…）<br>struct AVCodec  <em>codec：采用的解码器AVCodec（H.264,MPEG2…）<br>int bit_rate：平均比特率<br>uint8_t </em>extradata; int extradata_size：针对特定编码器包含的附加信息（例如对于H.264解码器来说，<br>存储SPS，PPS等）<br>AVRational time_base：根据该参数，可以把PTS转化为实际的时间（单位为秒s）<br>int width, height：如果是视频的话，代表宽和高<br>int refs：运动估计参考帧的个数（H.264的话会有多帧，MPEG2这类的一般就没有了）<br>int sample_rate：采样率（音频）<br>int channels：声道数（音频）<br>enum AVSampleFormat sample_fmt：采样格式<br>int profile：型（H.264里面就有，其他编码标准应该也有）</p>
+<h4 id="AVIOContext是FFmpeg管理输入输出数据的结构体："><a href="#AVIOContext是FFmpeg管理输入输出数据的结构体：" class="headerlink" title="AVIOContext是FFmpeg管理输入输出数据的结构体："></a>AVIOContext是FFmpeg管理输入输出数据的结构体：</h4><p>unsigned char <em>buffer：缓存开始位置<br>int buffer_size：缓存大小（默认32768）<br>unsigned char </em>buf_ptr：当前指针读取到的位置<br>unsigned char <em>buf_end：缓存结束的位置<br>void </em>opaque：URLContext结构体</p>
+<h4 id="AVCodec是存储编解码器信息的结构体："><a href="#AVCodec是存储编解码器信息的结构体：" class="headerlink" title="AVCodec是存储编解码器信息的结构体："></a>AVCodec是存储编解码器信息的结构体：</h4><p>const char <em>name：编解码器的名字，比较短<br>const char </em>long_name：编解码器的名字，全称，比较长<br>enum AVMediaType type：指明了类型，是视频，音频，还是字幕<br>enum AVCodecID id：ID，不重复<br>const AVRational <em>supported_framerates：支持的帧率（仅视频）<br>const enum AVPixelFormat </em>pix_fmts：支持的像素格式（仅视频）<br>const int <em>supported_samplerates：支持的采样率（仅音频）<br>const enum AVSampleFormat </em>sample_fmts：支持的采样格式（仅音频）<br>const uint64_t *channel_layouts：支持的声道数（仅音频）<br>int priv_data_size：私有数据的大小</p>
+<h4 id="AVStream存储每个视频-音频流信息的结构体："><a href="#AVStream存储每个视频-音频流信息的结构体：" class="headerlink" title="AVStream存储每个视频/音频流信息的结构体："></a>AVStream存储每个视频/音频流信息的结构体：</h4><p>int index：标识该视频/音频流<br>AVCodecContext <em>codec：指向该视频/音频流的AVCodecContext（它们是一一对应的关系）<br>AVRational time_base：时基。通过该值可以把PTS，DTS转化为真正的时间。FFMPEG其他<br>结构体中也有这个字段，但是根据我的经验，只有AVStream中的time_base是可用的。<br>PTS</em>time_base=真正的时间<br>int64_t duration：该视频/音频流长度<br>AVDictionary *metadata：元数据信息<br>AVRational avg_frame_rate：帧率（注：对视频来说，这个挺重要的）<br>AVPacket attached_pic：附带的图片。比如说一些MP3，AAC音频文件附带的专辑封面。</p>
+<h4 id="AVPacket是存储压缩编码数据相关信息的结构体："><a href="#AVPacket是存储压缩编码数据相关信息的结构体：" class="headerlink" title="AVPacket是存储压缩编码数据相关信息的结构体："></a>AVPacket是存储压缩编码数据相关信息的结构体：</h4><p>uint8_t *data：压缩编码的数据。<br>int   size：data的大小<br>int64_t pts：显示时间戳<br>int64_t dts：解码时间戳<br>int   stream_index：标识该AVPacket所属的视频/音频流。</p>
 
       
     </div>
@@ -570,8 +570,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -619,6 +628,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#FFmpeg基础知识和常用结构体"><span class="nav-number">1.</span> <span class="nav-text">FFmpeg基础知识和常用结构体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVFrame是包含码流参数较多的结构体。"><span class="nav-number">2.</span> <span class="nav-text">AVFrame是包含码流参数较多的结构体。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVCodecContext编解码上下文："><span class="nav-number">3.</span> <span class="nav-text">AVCodecContext编解码上下文：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVIOContext是FFmpeg管理输入输出数据的结构体："><span class="nav-number">4.</span> <span class="nav-text">AVIOContext是FFmpeg管理输入输出数据的结构体：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVCodec是存储编解码器信息的结构体："><span class="nav-number">5.</span> <span class="nav-text">AVCodec是存储编解码器信息的结构体：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVStream存储每个视频-音频流信息的结构体："><span class="nav-number">6.</span> <span class="nav-text">AVStream存储每个视频/音频流信息的结构体：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVPacket是存储压缩编码数据相关信息的结构体："><span class="nav-number">7.</span> <span class="nav-text">AVPacket是存储压缩编码数据相关信息的结构体：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
