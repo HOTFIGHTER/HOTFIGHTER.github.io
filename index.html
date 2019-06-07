@@ -389,6 +389,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/07/ffmpeg-compile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="决斗者">
+      <meta itemprop="description" content="记录学习的点滴，每天一小步">
+      <meta itemprop="image" content="/images/yu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="决斗者的学习博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/07/ffmpeg-compile/" class="post-title-link" itemprop="url">FFmpeg源码Android版本编译</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-07 10:26:38 / 修改时间：10:29:20" itemprop="dateCreated datePublished" datetime="2019-06-07T10:26:38+08:00">2019-06-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####FFmpeg源码Android版本编译</p>
+<p>好，今天从源码编译下FFmpeg的Android版本。<br>操作系统：Linux ubuntu12.04<br>NDK版本：android-ndk-r103-linux-x86_64.bin<br>ffmpeg版本：ffmpeg-2.6.9</p>
+<p>首先编写一个FFmpge编译脚本build_android.sh：</p>
+<p>#!/bin/bash<br>make clean<br>export NDK=/usr/ndk/android-ndk-r10e<br>export SYSROOT=$NDK/platforms/android-9/arch-arm/<br>export TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64<br>export CPU=arm<br>export PREFIX=$(pwd)/android/$CPU<br>export ADDI_CFLAGS=”-marm”</p>
+<p>./configure –target-os=linux \<br>–prefix=$PREFIX –arch=arm \<br>–disable-doc \<br>–enable-shared \<br>–disable-static \<br>–disable-yasm \<br>–disable-symver \<br>–enable-gpl \<br>–disable-ffmpeg \<br>–disable-ffplay \<br>–disable-ffprobe \<br>–disable-ffserver \<br>–disable-doc \<br>–disable-symver \<br>–cross-prefix=$TOOLCHAIN/bin/arm-linux-androideabi- \<br>–enable-cross-compile \<br>–sysroot=$SYSROOT \<br>–extra-cflags=”-Os -fpic $ADDI_CFLAGS” \<br>–extra-ldflags=”$ADDI_LDFLAGS” \<br>$ADDITIONAL_CONFIGURE_FLAG<br>make clean<br>make<br>make install</p>
+<p>并修改文件权限：<br>Sudo chmod 777 build_android.sh</p>
+<p>进入build_android.sh所在的目录，执行命令./buidl_android.sh<br>最后会在ffmpeg目录下出现一个android目录，里面有编译完成的so库</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/ffmpeg-base/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1156,7 +1305,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
