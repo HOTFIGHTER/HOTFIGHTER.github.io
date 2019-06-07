@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="####FFmpeg源码Android版本编译 好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=">
+  <meta name="description" content="FFmpeg源码Android版本编译好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=/usr/">
 <meta name="keywords" content="Java、C++、Python、TensorFlow、Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FFmpeg源码Android版本编译">
 <meta property="og:url" content="http://yoursite.com/2019/06/07/ffmpeg-compile/index.html">
 <meta property="og:site_name" content="决斗者的学习博客">
-<meta property="og:description" content="####FFmpeg源码Android版本编译 好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=">
+<meta property="og:description" content="FFmpeg源码Android版本编译好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=/usr/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-07T02:29:20.170Z">
+<meta property="og:updated_time" content="2019-06-07T02:32:59.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FFmpeg源码Android版本编译">
-<meta name="twitter:description" content="####FFmpeg源码Android版本编译 好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=">
+<meta name="twitter:description" content="FFmpeg源码Android版本编译好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=/usr/">
 
 
 
@@ -432,7 +432,7 @@
                 
               
 
-              <time title="创建时间：2019-06-07 10:26:38 / 修改时间：10:29:20" itemprop="dateCreated datePublished" datetime="2019-06-07T10:26:38+08:00">2019-06-07</time>
+              <time title="创建时间：2019-06-07 10:26:38 / 修改时间：10:32:59" itemprop="dateCreated datePublished" datetime="2019-06-07T10:26:38+08:00">2019-06-07</time>
             
 
             
@@ -471,8 +471,7 @@
       
 
       
-        <p>####FFmpeg源码Android版本编译</p>
-<p>好，今天从源码编译下FFmpeg的Android版本。<br>操作系统：Linux ubuntu12.04<br>NDK版本：android-ndk-r103-linux-x86_64.bin<br>ffmpeg版本：ffmpeg-2.6.9</p>
+        <h4 id="FFmpeg源码Android版本编译"><a href="#FFmpeg源码Android版本编译" class="headerlink" title="FFmpeg源码Android版本编译"></a>FFmpeg源码Android版本编译</h4><p>好，今天从源码编译下FFmpeg的Android版本。<br>操作系统：Linux ubuntu12.04<br>NDK版本：android-ndk-r103-linux-x86_64.bin<br>ffmpeg版本：ffmpeg-2.6.9</p>
 <p>首先编写一个FFmpge编译脚本build_android.sh：</p>
 <p>#!/bin/bash<br>make clean<br>export NDK=/usr/ndk/android-ndk-r10e<br>export SYSROOT=$NDK/platforms/android-9/arch-arm/<br>export TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64<br>export CPU=arm<br>export PREFIX=$(pwd)/android/$CPU<br>export ADDI_CFLAGS=”-marm”</p>
 <p>./configure –target-os=linux \<br>–prefix=$PREFIX –arch=arm \<br>–disable-doc \<br>–enable-shared \<br>–disable-static \<br>–disable-yasm \<br>–disable-symver \<br>–enable-gpl \<br>–disable-ffmpeg \<br>–disable-ffplay \<br>–disable-ffprobe \<br>–disable-ffserver \<br>–disable-doc \<br>–disable-symver \<br>–cross-prefix=$TOOLCHAIN/bin/arm-linux-androideabi- \<br>–enable-cross-compile \<br>–sysroot=$SYSROOT \<br>–extra-cflags=”-Os -fpic $ADDI_CFLAGS” \<br>–extra-ldflags=”$ADDI_LDFLAGS” \<br>$ADDITIONAL_CONFIGURE_FLAG<br>make clean<br>make<br>make install</p>
@@ -560,8 +559,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -609,6 +617,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#FFmpeg源码Android版本编译"><span class="nav-number">1.</span> <span class="nav-text">FFmpeg源码Android版本编译</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
