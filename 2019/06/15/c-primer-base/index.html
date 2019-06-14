@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="决斗者的学习博客">
 <meta property="og:description" content="C++ primer基础篇难点总结（1~7章）最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。1 变量声明规定了变量的类型和名字；定义与之相比，申请存储空间，还可能为变量定一个初值；变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。 2 标识符由字母、">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-14T16:32:47.467Z">
+<meta property="og:updated_time" content="2019-06-14T16:40:15.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer基础篇难点总结">
 <meta name="twitter:description" content="C++ primer基础篇难点总结（1~7章）最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。1 变量声明规定了变量的类型和名字；定义与之相比，申请存储空间，还可能为变量定一个初值；变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。 2 标识符由字母、">
@@ -432,7 +432,7 @@
                 
               
 
-              <time title="创建时间：2019-06-15 00:29:23 / 修改时间：00:32:47" itemprop="dateCreated datePublished" datetime="2019-06-15T00:29:23+08:00">2019-06-15</time>
+              <time title="创建时间：2019-06-15 00:29:23 / 修改时间：00:40:15" itemprop="dateCreated datePublished" datetime="2019-06-15T00:29:23+08:00">2019-06-15</time>
             
 
             
@@ -478,8 +478,8 @@
 <p>5 如果现在多个文件之间共享const对象，必须在变量的定义之前添加extern关键字。</p>
 <p>6 constexpr类型以便由编译器来验证变量的值是否是一个常量表达式。声明constexpr的变量一定是一个常量，而且必须用常量表达式初始化。在constexpr声明中如果定义了一个指针，限定符constexpr仅对指针有效，与指针所指对象无关。<br>Constexpr int *q=nullptr; //q是一个指向整数的常量指针。</p>
 <p>7 如果r是一个引用，decltype(r)的结果是引用类型。如果表达式的内容是解引用操作，则decltype得到引用类型(decltype(*p))。decltype((i)) d加上括号，结果将是引用。</p>
-<p>8 数组知识：<br>Int a[]={0,1,2}; int a2[=a; //不允许使用一个数组初始化另一个数组]<br>Int <em>parr[42]; //含有42个整型指针的数组<br>Int (</em>parray)[10]=&arr; //parray指向一个含有10个整数的数组<br>Int (&amp;arrRef)[10]=arr; //arrRef引用一个含有10个整数的数组<br>Int *(&amp;arry)[10]=parr; //arry是数组的引用，该数组还有10个指针</p>
-<p>9 vector的数据直接写入(迭代器默认是指针类型)：<br>for(auto beg=v.begin(),end=v.end();beg!=end;++beg){<br>    Auto &amp;r=<em>beg;<br>    r</em>-2;<br>}</p>
+<p>8 数组知识：<br>Int a[]={0,1,2}; int a2[]=a; //不允许使用一个数组初始化另一个数组]<br>Int <em>parr[42]; //含有42个整型指针的数组<br>Int (</em>parray)[10]=&arr; //parray指向一个含有10个整数的数组<br>Int (&amp;arrRef)[10]=arr; //arrRef引用一个含有10个整数的数组<br>Int *(&amp;arry)[10]=parr; //arry是数组的引用，该数组还有10个指针</p>
+<p>9 vector的数据直接写入(迭代器默认是指针类型)：<br>for(auto beg=v.begin(),end=v.end();beg!=end;++beg){<br>    Auto &amp;r=<em>beg;<br>    r</em>=2;<br>}</p>
 <p>10 int i=42;<br>     const int <em>cpi=&i;<br>     Const int &amp;r=i;<br>     Const int &amp;r2=42;<br>     Int </em>p=cp; //错误：p的类型和cp的类型不匹配<br>     Int &amp;r3=r; //错误：r3的类型和r的类型不匹配<br>     Int &amp;r4=42；//错误：不能用字面值初始化一个非常量引用</p>
 <p>11 函数指针：bool (<em>pf)(const string &amp;,const string &amp;);<br>     Bool </em>pf(const string &amp;,const string &amp;); pf是一个返回值为bool指针的函数</p>
 <p>12 类中的构造函数不能被声明为const，但是字面常量类的构造函数可以是constexpr函数</p>
