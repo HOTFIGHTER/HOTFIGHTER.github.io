@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="TensorFlow源码编译TensorFlow作为Google在AI领域的基础运行环境，如今作为大热门被广泛研究，这里使用Mac对TensorFlow源码进行编译。1 安装必要的软件1.1 安装JDK 8JDK 8 can be downloaded from Oracle’s JDK Page :下载链接: (http://www.oracle.com/technetwork/java/jav">
+  <meta name="description" content="C++ primer基础篇难点总结（1~7章）最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。1 变量声明规定了变量的类型和名字；定义与之相比，申请存储空间，还可能为变量定一个初值；变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。 2 标识符由字母、">
 <meta name="keywords" content="Java、C++、Python、TensorFlow、Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TensorFlow源码编译">
-<meta property="og:url" content="http://yoursite.com/2019/05/29/tensorflow-compile1/index.html">
+<meta property="og:title" content="C++ primer基础篇难点总结">
+<meta property="og:url" content="http://yoursite.com/2019/06/15/c-primer-base/index.html">
 <meta property="og:site_name" content="决斗者的学习博客">
-<meta property="og:description" content="TensorFlow源码编译TensorFlow作为Google在AI领域的基础运行环境，如今作为大热门被广泛研究，这里使用Mac对TensorFlow源码进行编译。1 安装必要的软件1.1 安装JDK 8JDK 8 can be downloaded from Oracle’s JDK Page :下载链接: (http://www.oracle.com/technetwork/java/jav">
+<meta property="og:description" content="C++ primer基础篇难点总结（1~7章）最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。1 变量声明规定了变量的类型和名字；定义与之相比，申请存储空间，还可能为变量定一个初值；变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。 2 标识符由字母、">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/Image1.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/Image2.jpg">
-<meta property="og:updated_time" content="2019-05-29T16:23:04.148Z">
+<meta property="og:updated_time" content="2019-06-14T16:32:47.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TensorFlow源码编译">
-<meta name="twitter:description" content="TensorFlow源码编译TensorFlow作为Google在AI领域的基础运行环境，如今作为大热门被广泛研究，这里使用Mac对TensorFlow源码进行编译。1 安装必要的软件1.1 安装JDK 8JDK 8 can be downloaded from Oracle’s JDK Page :下载链接: (http://www.oracle.com/technetwork/java/jav">
-<meta name="twitter:image" content="http://yoursite.com/2019/05/29/tensorflow-compile1/Image1.jpg">
+<meta name="twitter:title" content="C++ primer基础篇难点总结">
+<meta name="twitter:description" content="C++ primer基础篇难点总结（1~7章）最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。1 变量声明规定了变量的类型和名字；定义与之相比，申请存储空间，还可能为变量定一个初值；变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。 2 标识符由字母、">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/29/tensorflow-compile1/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/15/c-primer-base/">
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>TensorFlow源码编译 | 决斗者的学习博客</title>
+  <title>C++ primer基础篇难点总结 | 决斗者的学习博客</title>
   
 
 
@@ -392,7 +389,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/tensorflow-compile1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/c-primer-base/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="决斗者">
@@ -409,7 +406,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TensorFlow源码编译
+          <h1 class="post-title" itemprop="name headline">C++ primer基础篇难点总结
 
               
             
@@ -435,24 +432,12 @@
                 
               
 
-              <time title="创建时间：2019-05-29 20:25:36" itemprop="dateCreated datePublished" datetime="2019-05-29T20:25:36+08:00">2019-05-29</time>
+              <time title="创建时间：2019-06-15 00:29:23 / 修改时间：00:32:47" itemprop="dateCreated datePublished" datetime="2019-06-15T00:29:23+08:00">2019-06-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-30 00:23:04" itemprop="dateModified" datetime="2019-05-30T00:23:04+08:00">2019-05-30</time>
               
             
           </span>
@@ -486,13 +471,21 @@
       
 
       
-        <h4 id="TensorFlow源码编译"><a href="#TensorFlow源码编译" class="headerlink" title="TensorFlow源码编译"></a>TensorFlow源码编译</h4><p>TensorFlow作为Google在AI领域的基础运行环境，如今作为大热门被广泛研究，这里使用Mac对TensorFlow源码进行编译。<br>1 安装必要的软件<br>1.1 安装JDK 8<br>JDK 8 can be downloaded from Oracle’s JDK Page :<br>下载链接: (<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。</a><br>Look for “Mac OS X” under “Java SE Development Kit”. This will download a DMG image with an install wizard。<br>1.2 安装Homebrew<br>Install Homebrew on macOS (OS X)，Installing Homebrew is a one-time setup:<br>$ ruby -e “(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</a><br>1.3 安装指定版本Bazel<br>安装安装Google自家的编译工具bazel。<br>mac上最好的办法就是直接使用brew安装了(Install Bazel Homebrew Package)<br>brew install bazel<br>You are all set. You can confirm Bazel is installed successfully by running bazel version.<br>You can later upgrade to newer version of Bazel with brew upgrade bazel.<br>由于不同版本的TensorFlow源码对于Bazel版本有自己的要求。<br>可以通过如下方式安装指导版本的Bazel:<br>进入官网: <a href="https://docs.bazel.build/versions/master/install-os-x.html" target="_blank" rel="noopener">https://docs.bazel.build/versions/master/install-os-x.html</a><br>执行命令：<br>Step 1: Install Xcode command line tools<br>Xcode can be downloaded from the Apple Developer Site (this link redirects to their App Store).<br>For objc_<em> and ios_</em> rule support, you must have Xcode 6.1 or later with iOS SDK 8.1 installed on your system.<br>Once Xcode is installed, accept the license agreement for all users with the following command:<br>sudo xcodebuild -license accept</p>
-<p>Step 2: Download the Bazel installer<br>Next, download the Bazel binary installer named bazel-<version>-installer-darwin-x86_64.sh<br>from the Bazel releases page on GitHub.</version></p>
-<p>Step 3: Run the installer<br>Run the Bazel installer as follows:<br>chmod +x bazel-<version>-installer-darwin-x86_64.sh<br>./bazel-<version>-installer-darwin-x86_64.sh –user<br>The –user flag installs Bazel to the $HOME/bin directory on your system and sets the .bazelrc<br>path to $HOME/.bazelrc. Use the –help command to see additional installation options.<br>Step 4: Set up your environment<br>If you ran the Bazel installer with the –user flag as above, the Bazel executable is installed in your $HOME/bin directory.<br>It’s a good idea to add this directory to your default paths, as follows:<br>export PATH=”PATH:PATH:PATH:HOME/bin”<br>You can also add this command to your ~/.bashrc or ~/.profile file.<br>All set! You can confirm Bazel is installed successfully by running the following command:<br>bazel version</version></version></p>
-<p>1.4 Xcode安装<br>由于在Mac编译tensorflow需要Xcode环境。<br>首先打开连接: <a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">https://developer.apple.com/download/more/</a><br>进入页面:<br><img src="/2019/05/29/tensorflow-compile1/Image1.jpg" alt="面想对象的设计"><br>在搜索框中输入 xcode 回车搜索，如下图所示:<br><img src="/2019/05/29/tensorflow-compile1/Image2.jpg" alt="面想对象的设计"><br>找到所需的版本，点击+打开，查看详情，单击进行下载。<br>解压安装。</p>
-<p>2 安装tensorflow<br>2.1 下载官方的tensorflow源码<br>$ git clone <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow</a><br>2.2 配置<br>下载完成之后，在用户目录下生成一个tensorflow的目录，进入这个目录。<br>./configure<br>进行配置，在配置过程中会出现一系列的问题，通常情况下没有特殊的要求，一般全部都选择n。</p>
-<p>3 编译<br>配置完成后就是编译过程了，输入下面命令(输入此命令后你会发现你的电脑呼呼作响，并且会花较长时间来编译)：<br>bazel clean –expunge<br>sudo xcode-select -s /Applications/Xcode.app/Contents/Developer 这个选择Xcode的目录很重要<br>sudo xcodebuild -license<br>bazel clean –expunge<br>bazel build -c opt //tensorflow:libtensorflow_cc.so</p>
-<p>4 结果<br>最后在bazel-bin的tensorflow下生成libtensorflow_cc.so和libtensorflow_framework.so文件。</p>
+        <h4 id="C-primer基础篇难点总结（1-7章）"><a href="#C-primer基础篇难点总结（1-7章）" class="headerlink" title="C++ primer基础篇难点总结（1~7章）"></a>C++ primer基础篇难点总结（1~7章）</h4><p>最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。<br>1 变量声明规定了变量的类型和名字；<br>定义与之相比，申请存储空间，还可能为变量定一个初值；<br>变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。</p>
+<p>2 标识符由字母、数字和下划线组成，其中必须以字母或下划线开头。标识符的长度没有限制，但是对大小写字母敏感。<br>用户自定义的标识符中不能连续出现两个下划线，也不能以下划线紧连大写字母开头。</p>
+<p>3 引用为对象起了另外一个名字，通过将声明写成&amp;d的形式来定义引用类型，<br>Int &amp;refVal=ival;  int &refVal2; //报错，引用必须被初始化<br>引用类型的初始值必须为一个对象。<br>引用本身不是一个对象，所以不能定义引用的引用，也不能定义指向引用的指针。</p>
+<p>4 解引用操作适用于那些确实指向了某个对象的有效指针。<br>空指针实现三种方式：int <em>p1=nullptr; int </em>p2=0; int *p3=0;</p>
+<p>5 如果现在多个文件之间共享const对象，必须在变量的定义之前添加extern关键字。</p>
+<p>6 constexpr类型以便由编译器来验证变量的值是否是一个常量表达式。声明constexpr的变量一定是一个常量，而且必须用常量表达式初始化。在constexpr声明中如果定义了一个指针，限定符constexpr仅对指针有效，与指针所指对象无关。<br>Constexpr int *q=nullptr; //q是一个指向整数的常量指针。</p>
+<p>7 如果r是一个引用，decltype(r)的结果是引用类型。如果表达式的内容是解引用操作，则decltype得到引用类型(decltype(*p))。decltype((i)) d加上括号，结果将是引用。</p>
+<p>8 数组知识：<br>Int a[]={0,1,2}; int a2[=a; //不允许使用一个数组初始化另一个数组]<br>Int <em>parr[42]; //含有42个整型指针的数组<br>Int (</em>parray)[10]=&arr; //parray指向一个含有10个整数的数组<br>Int (&amp;arrRef)[10]=arr; //arrRef引用一个含有10个整数的数组<br>Int *(&amp;arry)[10]=parr; //arry是数组的引用，该数组还有10个指针</p>
+<p>9 vector的数据直接写入(迭代器默认是指针类型)：<br>for(auto beg=v.begin(),end=v.end();beg!=end;++beg){<br>    Auto &amp;r=<em>beg;<br>    r</em>-2;<br>}</p>
+<p>10 int i=42;<br>     const int <em>cpi=&i;<br>     Const int &amp;r=i;<br>     Const int &amp;r2=42;<br>     Int </em>p=cp; //错误：p的类型和cp的类型不匹配<br>     Int &amp;r3=r; //错误：r3的类型和r的类型不匹配<br>     Int &amp;r4=42；//错误：不能用字面值初始化一个非常量引用</p>
+<p>11 函数指针：bool (<em>pf)(const string &amp;,const string &amp;);<br>     Bool </em>pf(const string &amp;,const string &amp;); pf是一个返回值为bool指针的函数</p>
+<p>12 类中的构造函数不能被声明为const，但是字面常量类的构造函数可以是constexpr函数</p>
+<p>13 定义在public说明符之后的成员在整个程序可被访问，public成员定义类的接口。<br>     定义在private说明符之后的成员可以被类的成员函数访问，但不能被使用该类的<br>代码访问，private部分封装了类的实现细节。<br>    使用class和struct类定义唯一的区别就是默认的访问权限。</p>
+<p>14 友元：友元声明只能出现在类定义的内部，但是在类内部出现的具体位置不限。</p>
+<p>15 explicit关键字只允许出现在类内的构造函数声明处。<br>     Sales_data item1(null_book); //正确，直接初始化<br>     Sales_data item2=null_book; //错误，不能将explicit构造函数用于拷贝的初始化过程</p>
 
       
     </div>
@@ -523,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/18/c-language-learning/" rel="next" title="C、C++知识点总结">
-                <i class="fa fa-chevron-left"></i> C、C++知识点总结
+              <a href="/2019/06/07/ffmpeg-compile/" rel="next" title="FFmpeg源码Android版本编译">
+                <i class="fa fa-chevron-left"></i> FFmpeg源码Android版本编译
               </a>
             
           </div>
@@ -532,10 +525,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/02/ffmpeg-base/" rel="prev" title="FFmpeg基础知识和常用结构体">
-                FFmpeg基础知识和常用结构体 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -648,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TensorFlow源码编译"><span class="nav-number">1.</span> <span class="nav-text">TensorFlow源码编译</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-primer基础篇难点总结（1-7章）"><span class="nav-number">1.</span> <span class="nav-text">C++ primer基础篇难点总结（1~7章）</span></a></li></ol></div>
             
 
           </div>
