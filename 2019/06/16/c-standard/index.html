@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="FFmpeg源码Android版本编译好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=/usr/">
+  <meta name="description" content="C++ primer标准库难点总结（8~12章）最近在看C++ primer这本书的知识点，这里把8~12章标准库的难点总结了下。1 count&amp;lt;&amp;lt;“hi”&amp;lt;&amp;lt;endl; //输出hi和一个换行，然后刷新缓冲区   Count&amp;lt;&amp;lt;“hi”&amp;lt;&amp;lt;flush; //输出hi,然后刷新缓冲区，不附加任何额外字符   Count&amp;lt;&amp;lt;“hi”&amp;lt;">
 <meta name="keywords" content="Java、C++、Python、TensorFlow、Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FFmpeg源码Android版本编译">
-<meta property="og:url" content="http://yoursite.com/2019/06/07/ffmpeg-compile/index.html">
+<meta property="og:title" content="C++ primer标准库难点总结">
+<meta property="og:url" content="http://yoursite.com/2019/06/16/c-standard/index.html">
 <meta property="og:site_name" content="决斗者的学习博客">
-<meta property="og:description" content="FFmpeg源码Android版本编译好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=/usr/">
+<meta property="og:description" content="C++ primer标准库难点总结（8~12章）最近在看C++ primer这本书的知识点，这里把8~12章标准库的难点总结了下。1 count&amp;lt;&amp;lt;“hi”&amp;lt;&amp;lt;endl; //输出hi和一个换行，然后刷新缓冲区   Count&amp;lt;&amp;lt;“hi”&amp;lt;&amp;lt;flush; //输出hi,然后刷新缓冲区，不附加任何额外字符   Count&amp;lt;&amp;lt;“hi”&amp;lt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-07T02:32:59.561Z">
+<meta property="og:updated_time" content="2019-06-16T13:20:59.401Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FFmpeg源码Android版本编译">
-<meta name="twitter:description" content="FFmpeg源码Android版本编译好，今天从源码编译下FFmpeg的Android版本。操作系统：Linux ubuntu12.04NDK版本：android-ndk-r103-linux-x86_64.binffmpeg版本：ffmpeg-2.6.9 首先编写一个FFmpge编译脚本build_android.sh： #!/bin/bashmake cleanexport NDK=/usr/">
+<meta name="twitter:title" content="C++ primer标准库难点总结">
+<meta name="twitter:description" content="C++ primer标准库难点总结（8~12章）最近在看C++ primer这本书的知识点，这里把8~12章标准库的难点总结了下。1 count&amp;lt;&amp;lt;“hi”&amp;lt;&amp;lt;endl; //输出hi和一个换行，然后刷新缓冲区   Count&amp;lt;&amp;lt;“hi”&amp;lt;&amp;lt;flush; //输出hi,然后刷新缓冲区，不附加任何额外字符   Count&amp;lt;&amp;lt;“hi”&amp;lt;">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/07/ffmpeg-compile/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/16/c-standard/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>FFmpeg源码Android版本编译 | 决斗者的学习博客</title>
+  <title>C++ primer标准库难点总结 | 决斗者的学习博客</title>
   
 
 
@@ -389,7 +389,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/07/ffmpeg-compile/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/16/c-standard/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="决斗者">
@@ -406,7 +406,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">FFmpeg源码Android版本编译
+          <h1 class="post-title" itemprop="name headline">C++ primer标准库难点总结
 
               
             
@@ -432,7 +432,7 @@
                 
               
 
-              <time title="创建时间：2019-06-07 10:26:38 / 修改时间：10:32:59" itemprop="dateCreated datePublished" datetime="2019-06-07T10:26:38+08:00">2019-06-07</time>
+              <time title="创建时间：2019-06-16 21:18:11 / 修改时间：21:20:59" itemprop="dateCreated datePublished" datetime="2019-06-16T21:18:11+08:00">2019-06-16</time>
             
 
             
@@ -471,12 +471,24 @@
       
 
       
-        <h4 id="FFmpeg源码Android版本编译"><a href="#FFmpeg源码Android版本编译" class="headerlink" title="FFmpeg源码Android版本编译"></a>FFmpeg源码Android版本编译</h4><p>好，今天从源码编译下FFmpeg的Android版本。<br>操作系统：Linux ubuntu12.04<br>NDK版本：android-ndk-r103-linux-x86_64.bin<br>ffmpeg版本：ffmpeg-2.6.9</p>
-<p>首先编写一个FFmpge编译脚本build_android.sh：</p>
-<p>#!/bin/bash<br>make clean<br>export NDK=/usr/ndk/android-ndk-r10e<br>export SYSROOT=$NDK/platforms/android-9/arch-arm/<br>export TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64<br>export CPU=arm<br>export PREFIX=$(pwd)/android/$CPU<br>export ADDI_CFLAGS=”-marm”</p>
-<p>./configure –target-os=linux \<br>–prefix=$PREFIX –arch=arm \<br>–disable-doc \<br>–enable-shared \<br>–disable-static \<br>–disable-yasm \<br>–disable-symver \<br>–enable-gpl \<br>–disable-ffmpeg \<br>–disable-ffplay \<br>–disable-ffprobe \<br>–disable-ffserver \<br>–disable-doc \<br>–disable-symver \<br>–cross-prefix=$TOOLCHAIN/bin/arm-linux-androideabi- \<br>–enable-cross-compile \<br>–sysroot=$SYSROOT \<br>–extra-cflags=”-Os -fpic $ADDI_CFLAGS” \<br>–extra-ldflags=”$ADDI_LDFLAGS” \<br>$ADDITIONAL_CONFIGURE_FLAG<br>make clean<br>make<br>make install</p>
-<p>并修改文件权限：<br>Sudo chmod 777 build_android.sh</p>
-<p>进入build_android.sh所在的目录，执行命令./buidl_android.sh<br>最后会在ffmpeg目录下出现一个android目录，里面有编译完成的so库</p>
+        <h4 id="C-primer标准库难点总结（8-12章）"><a href="#C-primer标准库难点总结（8-12章）" class="headerlink" title="C++ primer标准库难点总结（8~12章）"></a>C++ primer标准库难点总结（8~12章）</h4><p>最近在看C++ primer这本书的知识点，这里把8~12章标准库的难点总结了下。<br>1 count&lt;&lt;“hi”&lt;&lt;endl; //输出hi和一个换行，然后刷新缓冲区<br>   Count&lt;&lt;“hi”&lt;&lt;flush; //输出hi,然后刷新缓冲区，不附加任何额外字符<br>   Count&lt;&lt;“hi”&lt;&lt;ends; //输出hi和一个空字符，然后刷新缓冲区</p>
+<p>2 顺序容器：<br>   Vector:  可变大小数组。支持快速随机访问。在尾部之外的位置插入或删除元素可能很慢。<br>   Deque: 双端队列。支持快速随机访问。在头尾位置插入/删除速度很快。<br>   List:   双向链表。只支持双向顺序访问。<br>   Forward_list:  单向链表。只支持单向顺序访问。<br>   Array：固定大小数组。支持快速随机访问。不能添加或删除元素。<br>   String: 与vector相似容器，随机访问快。在尾部插入/删除速度快。</p>
+<p>3 容器列表初始化：<br>   List<string> authors={“Milton”,”Shakespeare”,”Austen”};<br>   Forward_list<int> ivec(10); //10个元素，每个都初始化为0</int></string></p>
+<p>4 int digs[10]={0,1,2,3,4,5,6,7,8,9};<br>   Int cpy[10]=digs;  //错误：内置数组不支持拷贝或赋值<br>   Array&lt;int,10&gt; digits={0,1,2,3,4,5,6,7,8,9};<br>   Array&lt;int,10&gt; copy=digits;  //正确，只要数组类型匹配</p>
+<p>5 使用push_back<br>   String word;<br>   While(cin&gt;&gt;word)<br>     Container.push_back(word);</p>
+<p>6 使用emplace操作，当调用push或insert成员函数时，我们将元素类型的对象传递给它们，这些对象被拷贝到容器中。当我们调用一个emplace成员函数，则是将参数传递给元素类型的构造函数。</p>
+<p>7 vector的capacity()代表容量一般大于等于size()</p>
+<p>8 vector<int> vec;<br>   fill_n(vec.begin(),vec.size(),0);//将所有元素重置为0</int></p>
+<p>9 vector中unique并不是真的删除任何元素，它只是覆盖相邻的重复元素，使得不重复元素出现在序列开始部分。</p>
+<p>10 lambda表达式：<br>    [capture list] (parameter list) -&gt; return type {function body} 捕获列表只用于局部非static变量，lambda可以直接使用局部static变量和在它所在函数之外声明的名字。<br>    &amp;告诉编译器采用捕获引用方式，=则表示采用值捕获方式。</p>
+<p>11 可变lambda，对于一个值被拷贝的变量，lambda不会改变其值。如果希望改变一个被捕获的变量的值，就必须在参数列表加上关键字mutable。<br>    Size_t v1=42;<br>    Auto f=<a href>v1</a> mutable{return ++v1;};<br>    V1=0;<br>   Auto j=f();</p>
+<p>12  一个map或set中的关键字必须是唯一的，对于一个给定的关键字，只能有一个元素关键字等于它。容器multimap和multiset没有限制，它们都允许多个元素具有相同的关键字。</p>
+<p>13 set的迭代器是const的<br>     set<int> iset={0,1,2,3,4,5,6,7,8,9};<br>     Set<int>::iterator set_it= iset.begin();<br>     If(set_it !=iset.end()){<br>       <em>set_it=42;//错误，set中的关键字是只读的<br>       Cout&lt;&lt;</em>set_it&lt;&lt;endl;<br>     }</int></int></p>
+<p>14 new在动态内存中为对象分配空间并返回一个指针该对象的指针，我们可以选择对对象进行初始化；delete接受一个动态对象的指针，销毁该对象，并释放与之关联的内存。</p>
+<p>15 智能指针：<br>     shared_ptr允许多个指针指向同一个对象；unique_ptr则独占所指向的对象。标准库还定义了一个名为weak_ptr的伴随类，是一种弱引用，指向shared_ptr所管理的对象。<br>     最安全的分配和使用动态内存的方法是调用一个名为make_shared的标准函数。此函数在动态内存中分配一个对象并初始化它。<br>     Shared_ptr的析构函数会递减它所指向的对象的引用计数。如果引用计数变为0，shared_ptr的析构函数会销毁对象，并释放它占用的内存。</p>
+<p>16 内存释放：<br>     Int *p(new int(42));<br>     Auto q=p;<br>     Delete p;<br>     p=nullptr;</p>
+<p>17 unique_ptr拥有指向的对象，unique_ptr不支持普通的拷贝或赋值操作：<br>     Unique_ptr<string> p1(new string(“ss”));<br>     Unique_ptr<string> p2(p1); //错误：不支持拷贝<br>     Unique_ptr<string> p3;<br>     p3=p2;  //错误:unique_ptr不支持赋值</string></string></string></p>
+<p>18 weak_ptr是一个不控制所指向对象生存期的智能指针，它指向一个shared_ptr管理的对象。将weak_ptr绑定到一个shared_ptr不会改变shared_ptr的引用计数。<br>    Auto p=make_shared<int>(42);<br>    Weak_ptr<int> wp(p);</int></int></p>
 
       
     </div>
@@ -507,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/02/ffmpeg-base/" rel="next" title="FFmpeg基础知识和常用结构体">
-                <i class="fa fa-chevron-left"></i> FFmpeg基础知识和常用结构体
+              <a href="/2019/06/15/c-primer-base/" rel="next" title="C++ primer基础篇难点总结">
+                <i class="fa fa-chevron-left"></i> C++ primer基础篇难点总结
               </a>
             
           </div>
@@ -516,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/15/c-primer-base/" rel="prev" title="C++ primer基础篇难点总结">
-                C++ primer基础篇难点总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -632,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#FFmpeg源码Android版本编译"><span class="nav-number">1.</span> <span class="nav-text">FFmpeg源码Android版本编译</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-primer标准库难点总结（8-12章）"><span class="nav-number">1.</span> <span class="nav-text">C++ primer标准库难点总结（8~12章）</span></a></li></ol></div>
             
 
           </div>
