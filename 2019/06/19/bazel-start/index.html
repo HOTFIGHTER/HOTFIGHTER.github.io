@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pokeball_menu.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pokeball_menu.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Bazel入门学习1 Bazel简介：bazel是Google开源的一套编译构建工具，广泛应用于Google内部，包括TensorFlow项目。修改TensorFlow内部源码，需要使用bazel来编译，故有必要了解下bazel。bazel优点很多，主要有1 构建快。支持增量编译。对依赖关系进行了优化，从而支持并发执行。2 可构建多种语言。bazel可用来构建Java C++ Android io">
+<meta name="keywords" content="Java、C++、Python、TensorFlow、Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bazel入门学习">
+<meta property="og:url" content="http://yoursite.com/2019/06/19/bazel-start/index.html">
+<meta property="og:site_name" content="决斗者的学习博客">
+<meta property="og:description" content="Bazel入门学习1 Bazel简介：bazel是Google开源的一套编译构建工具，广泛应用于Google内部，包括TensorFlow项目。修改TensorFlow内部源码，需要使用bazel来编译，故有必要了解下bazel。bazel优点很多，主要有1 构建快。支持增量编译。对依赖关系进行了优化，从而支持并发执行。2 可构建多种语言。bazel可用来构建Java C++ Android io">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-19T00:31:18.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bazel入门学习">
+<meta name="twitter:description" content="Bazel入门学习1 Bazel简介：bazel是Google开源的一套编译构建工具，广泛应用于Google内部，包括TensorFlow项目。修改TensorFlow内部源码，需要使用bazel来编译，故有必要了解下bazel。bazel优点很多，主要有1 构建快。支持增量编译。对依赖关系进行了优化，从而支持并发执行。2 可构建多种语言。bazel可用来构建Java C++ Android io">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/06/19/bazel-start/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Bazel入门学习 | 决斗者的学习博客</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6697a1363f65085bd28b3b4b490bdd74";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">决斗者的学习博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">记录学习的技能和遇到的问题</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/19/bazel-start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="决斗者">
+      <meta itemprop="description" content="记录学习的点滴，每天一小步">
+      <meta itemprop="image" content="/images/yu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="决斗者的学习博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Bazel入门学习
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-19 07:56:35 / 修改时间：08:31:18" itemprop="dateCreated datePublished" datetime="2019-06-19T07:56:35+08:00">2019-06-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="Bazel入门学习"><a href="#Bazel入门学习" class="headerlink" title="Bazel入门学习"></a>Bazel入门学习</h4><p>1 Bazel简介：<br>bazel是Google开源的一套编译构建工具，广泛应用于Google内部，包括TensorFlow项目。修改TensorFlow内部源码，需要使用bazel来编译，<br>故有必要了解下bazel。bazel优点很多，主要有<br>1 构建快。支持增量编译。对依赖关系进行了优化，从而支持并发执行。<br>2 可构建多种语言。bazel可用来构建Java C++ Android ios等很多语言和框架，并支持mac windows linux等不同平台<br>3 可伸缩。可处理任意大小的代码库，可处理多个库，也可以处理单个库<br>4 可扩展。使用bazel扩展语言可支持新语言和新平台。</p>
+<p>2 Bazel项目结构：<br>和Makefile一样，使用bazel编译也必须满足它的项目结构要求。bazel顶层，也就是根目录下为工作区workspace，workspace下包含多个package，<br>每个package又包含多个编译目标target。<br>2.1 工作区workspace:<br>要进行构建的文件系统，根目录下必须包含一个文件名为WORKSPACE的文件，即使它内容为空。它指明了构建的根目录。文件系统中包括源文件，<br>头文件，输出目录的符号链接等。下面是TensorFlow源码根目录下的WORKSPACE<br>workspace(name = “org_tensorflow”)<br>http_archive(<br>    name = “io_bazel_rules_closure”,<br>    sha256 = “110fe68753413777944b473c25eed6368c4a0487cee23a7bac1b13cc49d3e257”,<br>    strip_prefix = “rules_closure-4af89ef1db659eb41f110df189b67d4cf14073e1”,<br>    urls = [<br>        “<a href="https://mirror.bazel.build/github.com/bazelbuild/rules_closure/archive/4af89ef1db659eb41f110df189b67d4cf14073e1.tar.gz&quot;" target="_blank" rel="noopener">https://mirror.bazel.build/github.com/bazelbuild/rules_closure/archive/4af89ef1db659eb41f110df189b67d4cf14073e1.tar.gz&quot;</a>,<br>        “<a href="https://github.com/bazelbuild/rules_closure/archive/4af89ef1db659eb41f110df189b67d4cf14073e1.tar.gz&quot;" target="_blank" rel="noopener">https://github.com/bazelbuild/rules_closure/archive/4af89ef1db659eb41f110df189b67d4cf14073e1.tar.gz&quot;</a>,  # 2017-08-28<br>    ],<br>)<br>load(“@io_bazel_rules_closure//closure:defs.bzl”, “closure_repositories”)<br>closure_repositories()<br>load(“//tensorflow:workspace.bzl”, “tf_workspace”)</p>
+<h1 id="Uncomment-and-update-the-paths-in-these-entries-to-build-the-Android-demo"><a href="#Uncomment-and-update-the-paths-in-these-entries-to-build-the-Android-demo" class="headerlink" title="Uncomment and update the paths in these entries to build the Android demo."></a>Uncomment and update the paths in these entries to build the Android demo.</h1><p>#android_sdk_repository(</p>
+<h1 id="name-“androidsdk”"><a href="#name-“androidsdk”" class="headerlink" title="name = “androidsdk”,"></a>name = “androidsdk”,</h1><h1 id="api-level-23"><a href="#api-level-23" class="headerlink" title="api_level = 23,"></a>api_level = 23,</h1><h1 id="Ensure-that-you-have-the-build-tools-version-below-installed-in-the"><a href="#Ensure-that-you-have-the-build-tools-version-below-installed-in-the" class="headerlink" title="# Ensure that you have the build_tools_version below installed in the"></a># Ensure that you have the build_tools_version below installed in the</h1><h1 id="SDK-manager-as-it-updates-periodically"><a href="#SDK-manager-as-it-updates-periodically" class="headerlink" title="# SDK manager as it updates periodically."></a># SDK manager as it updates periodically.</h1><h1 id="build-tools-version-“26-0-1”"><a href="#build-tools-version-“26-0-1”" class="headerlink" title="build_tools_version = “26.0.1”,"></a>build_tools_version = “26.0.1”,</h1><h1 id="Replace-with-path-to-Android-SDK-on-your-system"><a href="#Replace-with-path-to-Android-SDK-on-your-system" class="headerlink" title="# Replace with path to Android SDK on your system"></a># Replace with path to Android SDK on your system</h1><h1 id="path-“-lt-PATH-TO-SDK-gt-”"><a href="#path-“-lt-PATH-TO-SDK-gt-”" class="headerlink" title="path = “&lt;PATH_TO_SDK&gt;”,"></a>path = “&lt;PATH_TO_SDK&gt;”,</h1><p>#)<br>#</p>
+<p>#android_ndk_repository(</p>
+<h1 id="name-”androidndk”"><a href="#name-”androidndk”" class="headerlink" title="name=”androidndk”,"></a>name=”androidndk”,</h1><h1 id="path-”-lt-PATH-TO-NDK-gt-”"><a href="#path-”-lt-PATH-TO-NDK-gt-”" class="headerlink" title="path=”&lt;PATH_TO_NDK&gt;”,"></a>path=”&lt;PATH_TO_NDK&gt;”,</h1><h1 id="This-needs-to-be-14-or-higher-to-compile-TensorFlow"><a href="#This-needs-to-be-14-or-higher-to-compile-TensorFlow" class="headerlink" title="# This needs to be 14 or higher to compile TensorFlow."></a># This needs to be 14 or higher to compile TensorFlow.</h1><h1 id="Please-specify-API-level-to-gt-21-to-build-for-64-bit"><a href="#Please-specify-API-level-to-gt-21-to-build-for-64-bit" class="headerlink" title="# Please specify API level to &gt;= 21 to build for 64-bit"></a># Please specify API level to &gt;= 21 to build for 64-bit</h1><h1 id="archtectures-or-the-Android-NDK-will-automatically-select-biggest"><a href="#archtectures-or-the-Android-NDK-will-automatically-select-biggest" class="headerlink" title="# archtectures or the Android NDK will automatically select biggest"></a># archtectures or the Android NDK will automatically select biggest</h1><h1 id="API-level-that-it-supports-without-notice"><a href="#API-level-that-it-supports-without-notice" class="headerlink" title="# API level that it supports without notice."></a># API level that it supports without notice.</h1><h1 id="Note-that-the-NDK-version-is-not-the-API-level"><a href="#Note-that-the-NDK-version-is-not-the-API-level" class="headerlink" title="# Note that the NDK version is not the API level."></a># Note that the NDK version is not the API level.</h1><h1 id="api-level-14"><a href="#api-level-14" class="headerlink" title="api_level=14)"></a>api_level=14)</h1><h1 id="Please-add-all-new-TensorFlow-dependencies-in-workspace-bzl"><a href="#Please-add-all-new-TensorFlow-dependencies-in-workspace-bzl" class="headerlink" title="Please add all new TensorFlow dependencies in workspace.bzl."></a>Please add all new TensorFlow dependencies in workspace.bzl.</h1><p>tf_workspace()</p>
+<p>new_http_archive(<br>    name = “inception5h”,<br>    build_file = “models.BUILD”,<br>    sha256 = “d13569f6a98159de37e92e9c8ec4dae8f674fbf475f69fe6199b514f756d4364”,<br>    urls = [<br>        “<a href="http://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip&quot;" target="_blank" rel="noopener">http://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip&quot;</a>,<br>        “<a href="http://download.tensorflow.org/models/inception5h.zip&quot;" target="_blank" rel="noopener">http://download.tensorflow.org/models/inception5h.zip&quot;</a>,<br>    ],<br>)</p>
+<p>new_http_archive(<br>    name = “mobile_ssd”,<br>    build_file = “models.BUILD”,<br>    sha256 = “bddd81ea5c80a97adfac1c9f770e6f55cbafd7cce4d3bbe15fbeb041e6b8f3e8”,<br>    urls = [<br>        “<a href="http://storage.googleapis.com/download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_android_export.zip&quot;" target="_blank" rel="noopener">http://storage.googleapis.com/download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_android_export.zip&quot;</a>,<br>        “<a href="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_android_export.zip&quot;" target="_blank" rel="noopener">http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_android_export.zip&quot;</a>,<br>    ],<br>)</p>
+<p>new_http_archive(<br>    name = “mobile_multibox”,<br>    build_file = “models.BUILD”,<br>    sha256 = “859edcddf84dddb974c36c36cfc1f74555148e9c9213dedacf1d6b613ad52b96”,<br>    urls = [<br>        “<a href="http://storage.googleapis.com/download.tensorflow.org/models/mobile_multibox_v1a.zip&quot;" target="_blank" rel="noopener">http://storage.googleapis.com/download.tensorflow.org/models/mobile_multibox_v1a.zip&quot;</a>,<br>        “<a href="http://download.tensorflow.org/models/mobile_multibox_v1a.zip&quot;" target="_blank" rel="noopener">http://download.tensorflow.org/models/mobile_multibox_v1a.zip&quot;</a>,<br>    ],<br>)</p>
+<p>new_http_archive(<br>    name = “stylize”,<br>    build_file = “models.BUILD”,<br>    sha256 = “3d374a730aef330424a356a8d4f04d8a54277c425e274ecb7d9c83aa912c6bfa”,<br>    urls = [<br>        “<a href="http://storage.googleapis.com/download.tensorflow.org/models/stylize_v1.zip&quot;" target="_blank" rel="noopener">http://storage.googleapis.com/download.tensorflow.org/models/stylize_v1.zip&quot;</a>,<br>        “<a href="http://download.tensorflow.org/models/stylize_v1.zip&quot;" target="_blank" rel="noopener">http://download.tensorflow.org/models/stylize_v1.zip&quot;</a>,<br>    ],<br>)</p>
+<p>new_http_archive(<br>    name = “speech_commands”,<br>    build_file = “models.BUILD”,<br>    sha256 = “c3ec4fea3158eb111f1d932336351edfe8bd515bb6e87aad4f25dbad0a600d0c”,<br>    urls = [<br>        “<a href="http://storage.googleapis.com/download.tensorflow.org/models/speech_commands_v0.01.zip&quot;" target="_blank" rel="noopener">http://storage.googleapis.com/download.tensorflow.org/models/speech_commands_v0.01.zip&quot;</a>,<br>        “<a href="http://download.tensorflow.org/models/speech_commands_v0.01.zip&quot;" target="_blank" rel="noopener">http://download.tensorflow.org/models/speech_commands_v0.01.zip&quot;</a>,<br>    ],<br>)</p>
+<p>new_local_repository(<br>    name = “aarch64_compiler”,<br>    path = “/“,<br>    build_file = “aarch64_compiler.BUILD”,<br>)</p>
+<p>http_archive：下载bazel文件，然后解压它，这个bazel 目录文件中必须包含BUILD文件。上面的http_archive中指明了要<br>下载io_bazel_rules_closure文件，以及它的下载地址。<br>new_http_archive: 下载文件，然后解压它，然后和其中包含的build_file一起创建bazel目录。<br>load：从.bzl文件中加载一些内容，如上面从defs.bzl文件中加载内容。<br>android_sdk_repository：构建Android app时使用，指定Android sdk目录。<br>android_ndk_repository：构建Android app时使用，指定Android ndk目录。</p>
+<p>2.2 包package<br>一个WORKSPACE工作区下可以包括多个包package，每个package可以实现一个子模块，从而让各个模块进行解耦。<br>每个package下必须包含一个BUILD文件，它指定了package的编译构建规则。</p>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><h1 id="TensorFlow-is-a-computational-framework-primarily-for-use-in-machine"><a href="#TensorFlow-is-a-computational-framework-primarily-for-use-in-machine" class="headerlink" title="TensorFlow is a computational framework, primarily for use in machine"></a>TensorFlow is a computational framework, primarily for use in machine</h1><h1 id="learning-applications"><a href="#learning-applications" class="headerlink" title="learning applications."></a>learning applications.</h1><p>package(<br>    default_visibility = [“//visibility:public”],<br>)<br>licenses([“notice”])  # Apache 2.0<br>load(<br>    “//tensorflow:tensorflow.bzl”,<br>    “tf_cc_test”,<br>    “tf_cc_binary”,<br>    “tf_copts”,<br>    “tf_gen_op_wrappers_cc”,<br>    “cc_library_with_android_deps”,<br>)</p>
+<p>cc_library(<br>    name = “gradients”,<br>    srcs = [<br>        “framework/gradients.cc”,<br>        “framework/while_gradients.cc”,<br>        “framework/while_gradients.h”,<br>    ],<br>    hdrs = [“framework/gradients.h”],<br>    deps = [<br>        “:cc_ops”,<br>        “:cc_ops_internal”,<br>        “:grad_op_registry”,<br>        “:ops”,<br>        “:scope”,<br>        “:scope_internal”,<br>        “:while_loop”,<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:lib_internal”,<br>    ],<br>)</p>
+<p>tf_cc_test(<br>    name = “framework_gradients_test”,<br>    srcs = [“framework/gradients_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:client_session”,<br>        “:grad_op_registry”,<br>        “:grad_ops”,<br>        “:gradients”,<br>        “:testutil”,<br>        “//tensorflow/core:all_kernels”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:framework_internal”,<br>        “//tensorflow/core:protos_all_cc”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>tf_cc_test(<br>    name = “framework_while_gradients_test”,<br>    size = “small”,<br>    srcs = [“framework/while_gradients_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:client_session”,<br>        “:grad_op_registry”,<br>        “:grad_ops”,<br>        “:gradients”,<br>        “:testutil”,<br>        “:while_loop”,<br>        “//tensorflow/core:all_kernels”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:framework_internal”,<br>        “//tensorflow/core:protos_all_cc”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “gradient_checker”,<br>    srcs = [“framework/gradient_checker.cc”],<br>    hdrs = [“framework/gradient_checker.h”],<br>    deps = [<br>        “:cc_ops”,<br>        “:client_session”,<br>        “:gradients”,<br>        “:ops”,<br>        “:scope”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:lib_internal”,<br>    ],<br>)</p>
+<p>tf_cc_test(<br>    name = “framework_gradient_checker_test”,<br>    srcs = [“framework/gradient_checker_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:grad_op_registry”,<br>        “:grad_ops”,<br>        “:gradient_checker”,<br>        “:testutil”,<br>        “//tensorflow/core:all_kernels”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:framework_internal”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “grad_ops”,<br>    deps = [<br>        “:array_grad”,<br>        “:data_flow_grad”,<br>        “:math_grad”,<br>        “:nn_grad”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “grad_testutil”,<br>    testonly = 1,<br>    srcs = [“gradients/grad_testutil.cc”],<br>    hdrs = [“gradients/grad_testutil.h”],<br>    deps = [<br>        “:grad_op_registry”,<br>        “:ops”,<br>        “:scope”,<br>    ],<br>)</p>
+<p>cc_library_with_android_deps(<br>    name = “ops”,<br>    srcs = [“framework/ops.cc”],<br>    hdrs = [“framework/ops.h”],<br>    android_deps = [“//tensorflow/core:android_tensorflow_lib”],<br>    deps = [<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:protos_all_cc”,<br>    ],<br>)</p>
+<p>cc_library_with_android_deps(<br>    name = “scope”,<br>    srcs = [<br>        “framework/scope.cc”,<br>        “framework/scope_internal.h”,<br>    ],<br>    hdrs = [“framework/scope.h”],<br>    android_deps = [“//tensorflow/core:android_tensorflow_lib”],<br>    common_deps = [<br>        “:ops”,<br>    ],<br>    deps = [<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:protos_all_cc”,<br>    ],<br>)</p>
+<p>cc_library_with_android_deps(<br>    name = “scope_internal”,<br>    hdrs = [“framework/scope_internal.h”],<br>    common_deps = [<br>        “:scope”,<br>    ],<br>    deps = [],<br>)</p>
+<p>tf_cc_test(<br>    name = “framework_scope_test”,<br>    srcs = [“framework/scope_test.cc”],<br>    deps = [<br>        “:ops”,<br>        “:scope”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library_with_android_deps(<br>    name = “client_session”,<br>    srcs = [“client/client_session.cc”],<br>    hdrs = [“client/client_session.h”],<br>    android_deps = [“//tensorflow/core:android_tensorflow_lib”],<br>    common_deps = [<br>        “:ops”,<br>        “:scope”,<br>    ],<br>    deps = [<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:protos_all_cc”,<br>    ],<br>)</p>
+<p>tf_cc_test(<br>    name = “client_client_session_test”,<br>    srcs = [“client/client_session_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:client_session”,<br>        “//tensorflow/core:all_kernels”,<br>        “//tensorflow/core:core_cpu_internal”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:tensorflow”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library_with_android_deps(<br>    name = “const_op”,<br>    srcs = [“ops/const_op.cc”],<br>    hdrs = [“ops/const_op.h”],<br>    android_deps = [<br>        “//tensorflow/core:android_tensorflow_lib”,<br>    ],<br>    common_deps = [<br>        “:ops”,<br>        “:scope”,<br>    ],<br>    deps = [<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:framework”,<br>    ],<br>)</p>
+<p>tf_cc_test(<br>    name = “ops_const_op_test”,<br>    srcs = [“ops/const_op_test.cc”],<br>    deps = [<br>        “:const_op”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library_with_android_deps(<br>    name = “while_loop”,<br>    srcs = [“ops/while_loop.cc”],<br>    hdrs = [“ops/while_loop.h”],<br>    android_deps = [<br>        “//tensorflow/core:android_tensorflow_lib”,<br>    ],<br>    common_deps = [<br>        “:cc_ops”,<br>        “:cc_ops_internal”,<br>        “:ops”,<br>        “:scope”,<br>        “:scope_internal”,<br>    ],<br>    deps = [<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:framework”,<br>    ],<br>)</p>
+<p>tf_cc_test(<br>    name = “ops_while_loop_test”,<br>    size = “small”,<br>    srcs = [“ops/while_loop_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:client_session”,<br>        “:testutil”,<br>        “:while_loop”,<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “grad_op_registry”,<br>    srcs = [“framework/grad_op_registry.cc”],<br>    hdrs = [“framework/grad_op_registry.h”],<br>    deps = [<br>        “:ops”,<br>        “:scope”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “array_grad”,<br>    srcs = [“gradients/array_grad.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:cc_ops_internal”,<br>        “:grad_op_registry”,<br>        “:gradients”,<br>        “//tensorflow/core:lib_proto_parsing”,<br>    ],<br>    alwayslink = 1,<br>)</p>
+<p>tf_cc_test(<br>    name = “gradients_array_grad_test”,<br>    srcs = [“gradients/array_grad_test.cc”],<br>    deps = [<br>        “:array_grad”,<br>        “:cc_ops”,<br>        “:cc_ops_internal”,<br>        “:grad_op_registry”,<br>        “:grad_testutil”,<br>        “:gradient_checker”,<br>        “:testutil”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “math_grad”,<br>    srcs = [“gradients/math_grad.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:cc_ops_internal”,<br>        “:grad_op_registry”,<br>        “:gradients”,<br>    ],<br>    alwayslink = 1,<br>)</p>
+<p>tf_cc_test(<br>    name = “gradients_math_grad_test”,<br>    srcs = [“gradients/math_grad_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:grad_op_registry”,<br>        “:grad_testutil”,<br>        “:gradient_checker”,<br>        “:math_grad”,<br>        “:testutil”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “nn_grad”,<br>    srcs = [“gradients/nn_grad.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:cc_ops_internal”,<br>        “:grad_op_registry”,<br>        “:gradients”,<br>    ],<br>    alwayslink = 1,<br>)</p>
+<p>tf_cc_test(<br>    name = “gradients_nn_grad_test”,<br>    srcs = [“gradients/nn_grad_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:grad_op_registry”,<br>        “:grad_testutil”,<br>        “:gradient_checker”,<br>        “:nn_grad”,<br>        “:testutil”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “data_flow_grad”,<br>    srcs = [“gradients/data_flow_grad.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:cc_ops_internal”,<br>        “:grad_op_registry”,<br>        “:gradients”,<br>    ],<br>    alwayslink = 1,<br>)</p>
+<p>tf_cc_test(<br>    name = “gradients_data_flow_grad_test”,<br>    size = “small”,<br>    srcs = [“gradients/data_flow_grad_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:data_flow_grad”,<br>        “:grad_op_registry”,<br>        “:grad_testutil”,<br>        “:gradient_checker”,<br>        “:testutil”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>tf_gen_op_wrappers_cc(<br>    name = “cc_ops”,<br>    op_lib_names = [<br>        “array_ops”,<br>        “audio_ops”,<br>        “candidate_sampling_ops”,<br>        “control_flow_ops”,<br>        “data_flow_ops”,<br>        “image_ops”,<br>        “io_ops”,<br>        “linalg_ops”,<br>        “logging_ops”,<br>        “lookup_ops”,<br>        “math_ops”,<br>        “nn_ops”,<br>        “no_op”,<br>        “parsing_ops”,<br>        “random_ops”,<br>        “sparse_ops”,<br>        “state_ops”,<br>        “string_ops”,<br>        “training_ops”,<br>        “user_ops”,<br>    ],</p>
+<pre><code>other_hdrs = [
+    &quot;ops/const_op.h&quot;,
+    &quot;ops/standard_ops.h&quot;,
+],
+
+override_file = &quot;ops/op_gen_overrides.pbtxt&quot;,
+pkg = &quot;//tensorflow/core&quot;,
+</code></pre><p>)</p>
+<p>tf_cc_test(<br>    name = “framework_cc_ops_test”,<br>    srcs = [“framework/cc_ops_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:client_session”,<br>        “:test_op”,<br>        “:test_op_op_lib”,<br>        “:testutil”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>tf_gen_op_wrappers_cc(<br>    name = “sendrecv_ops”,<br>    include_internal_ops = 1,<br>    op_lib_names = [<br>        “sendrecv_ops”,<br>    ],</p>
+<pre><code>pkg = &quot;//tensorflow/core&quot;,
+</code></pre><p>)</p>
+<p>tf_gen_op_wrappers_cc(<br>    name = “function_ops”,<br>    include_internal_ops = 1,<br>    op_lib_names = [<br>        “function_ops”,<br>    ],<br>    pkg = “//tensorflow/core”,<br>    visibility = [“//tensorflow:internal”],<br>)</p>
+<p>tf_gen_op_wrappers_cc(<br>    name = “functional_ops”,<br>    include_internal_ops = 1,<br>    op_lib_names = [<br>        “functional_ops”,<br>    ],<br>    pkg = “//tensorflow/core”,<br>    visibility = [“//tensorflow:internal”],<br>)</p>
+<p>tf_gen_op_wrappers_cc(<br>    name = “resource_variable_ops”,<br>    include_internal_ops = 1,<br>    op_lib_names = [<br>        “resource_variable_ops”,<br>    ],<br>    pkg = “//tensorflow/core”,<br>    visibility = [“//tensorflow:internal”],<br>)</p>
+<p>tf_gen_op_wrappers_cc(<br>    name = “remote_fused_graph_ops”,<br>    op_lib_names = [<br>        “remote_fused_graph_ops”,<br>    ],<br>    pkg = “//tensorflow/core”,<br>)</p>
+<p>cc_library_with_android_deps(<br>    name = “cc_op_gen_main”,<br>    srcs = [<br>        “framework/cc_op_gen.cc”,<br>        “framework/cc_op_gen.h”,<br>        “framework/cc_op_gen_main.cc”,<br>    ],<br>    android_deps = [<br>        “//tensorflow/core:android_tensorflow_lib”,<br>    ],<br>    copts = tf_copts(),<br>    deps = [<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:op_gen_lib”,<br>        “//tensorflow/core:op_gen_overrides_proto_cc”,<br>        “//tensorflow/core:proto_text”,<br>        “//tensorflow/core:protos_all_cc”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “test_op_op_lib”,<br>    srcs = [“framework/test_op.cc”],<br>    linkstatic = 1,<br>    deps = [“//tensorflow/core:framework”],<br>    alwayslink = 1,<br>)</p>
+<p>cc_library(<br>    name = “testutil”,<br>    testonly = 1,<br>    srcs = [“framework/testutil.cc”],<br>    hdrs = [“framework/testutil.h”],<br>    deps = [<br>        “:client_session”,<br>        “:ops”,<br>        “:scope”,<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:tensorflow”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>tf_gen_op_wrappers_cc(<br>    name = “test_op”,<br>    op_lib_names = [<br>        “test_op”,<br>    ],<br>)</p>
+<p>tf_cc_binary(<br>    name = “tutorials_example_trainer”,<br>    srcs = [“tutorials/example_trainer.cc”],<br>    copts = tf_copts(),<br>    linkopts = select({<br>        “//tensorflow:windows”: [],<br>        “//tensorflow:windows_msvc”: [],<br>        “//tensorflow:darwin”: [<br>            “-lm”,<br>            “-lpthread”,<br>        ],<br>        “//tensorflow:ios”: [<br>            “-lm”,<br>            “-lpthread”,<br>        ],<br>        “//conditions:default”: [<br>            “-lm”,<br>            “-lpthread”,<br>            “-lrt”,<br>        ],<br>    }),<br>    deps = [<br>        “:cc_ops”,<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:protos_all_cc”,<br>        “//tensorflow/core:tensorflow”,<br>    ],<br>)</p>
+<p>filegroup(<br>    name = “all_files”,<br>    srcs = glob(<br>        [“<strong>/*”],<br>        exclude = [<br>            “</strong>/METADATA”,<br>            “**/OWNERS”,<br>        ],<br>    ),<br>    visibility = [“//tensorflow:<strong>subpackages</strong>“],<br>)</p>
+<p>cc_library(<br>    name = “queue_runner”,<br>    srcs = [“training/queue_runner.cc”],<br>    hdrs = [“training/queue_runner.h”],<br>    deps = [<br>        “:coordinator”,<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:protos_all_cc”,<br>        “//tensorflow/core/kernels:ops_util”,<br>    ],<br>)</p>
+<p>tf_cc_test(<br>    name = “queue_runner_test”,<br>    srcs = [“training/queue_runner_test.cc”],<br>    deps = [<br>        “coordinator”,<br>        “:cc_ops”,<br>        “:queue_runner”,<br>        “:scope”,<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:protos_all_cc”,<br>        “//tensorflow/core:tensorflow”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>cc_library(<br>    name = “coordinator”,<br>    srcs = [“training/coordinator.cc”],<br>    hdrs = [“training/coordinator.h”],<br>    deps = [<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:protos_all_cc”,<br>        “//tensorflow/core:tensorflow”,<br>    ],<br>)</p>
+<p>tf_cc_test(<br>    name = “coordinator_test”,<br>    srcs = [“training/coordinator_test.cc”],<br>    deps = [<br>        “:cc_ops”,<br>        “:coordinator”,<br>        “:queue_runner”,<br>        “:scope”,<br>        “//tensorflow/core:core_cpu”,<br>        “//tensorflow/core:framework”,<br>        “//tensorflow/core:lib”,<br>        “//tensorflow/core:lib_internal”,<br>        “//tensorflow/core:protos_all_cc”,<br>        “//tensorflow/core:tensorflow”,<br>        “//tensorflow/core:test”,<br>        “//tensorflow/core:test_main”,<br>        “//tensorflow/core:testlib”,<br>    ],<br>)</p>
+<p>tf_cc_binary：目标文件编译规则，为一个二进制可执行文件。name必须唯一，srcs指定了源文件，linkopts指定了链接规则，deps指定了依赖文件</p>
+<p>cc_library：库文件编译规则，name指定了编译为库文件后的文件名，srcs和hdrs指定源文件和头文件，deps指定需要依赖的其他文件</p>
+<p>tf_cc_test：测试文件规则</p>
+<p>package：通用方法，定义的值会作用到下面的每个子rule中。default_visibility指定了这个包的默认可见规则。可见的情况下才能被其他package调用。</p>
+<p>licenses：通用方法，默认的license</p>
+<p>load：通用方法，加载.bzl文件</p>
+<p>filegroup：通用方法，为多个编译目标target指定一个名字，glob是一个帮助函数，指定了目录中哪些文件会include，哪些会exclude。visibility<br>指定了target的可见性，也就是可以被哪些package调用</p>
+<p>其他一些常用方法可以参看bazel文档 <a href="https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary.linkopts" target="_blank" rel="noopener">https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary.linkopts</a></p>
+<p>2.2 目标<br>包package是一个容器，组成它的元素称为目标，分为文件和规则。文件分为两种，一种为程序员写的源代码，一种为构建工具生成的文件。<br>规则定义了如何利用输入来构建得到输出，如上面的BUILD。输入一般是源文件，库文件等，输出则一般是生成的构建目标文件。</p>
+<p>3 使用Bazel编译项目<br>Bazel提供了一些编译的例子，在<a href="https://github.com/bazelbuild/examples/，可以clone到本地试一下。" target="_blank" rel="noopener">https://github.com/bazelbuild/examples/，可以clone到本地试一下。</a><br>其中examples/cpp-tutorial目录下包含了这么些文件：<br>examples<br>└── cpp-tutorial<br>    ├──stage1<br>    │  └── main<br>    │      ├── BUILD<br>    │      ├── hello-world.cc<br>    │  └── WORKSPACE<br>    ├──stage2<br>    │  ├── main<br>    │  │   ├── BUILD<br>    │  │   ├── hello-world.cc<br>    │  │   ├── hello-greet.cc<br>    │  │   ├── hello-greet.h<br>    │  └── WORKSPACE<br>    └──stage3<br>       ├── main<br>       │   ├── BUILD<br>       │   ├── hello-world.cc<br>       │   ├── hello-greet.cc<br>       │   └── hello-greet.h<br>       ├── lib<br>       │   ├── BUILD<br>       │   ├── hello-time.cc<br>       │   └── hello-time.h<br>       └── WORKSPACE</p>
+<p>首先进入到cpp-tutorial/stage1目录下，然后运行以下指令：<br>bazel build //main:hello-world<br>注意target中的//main:是BUILD文件相对于WORKSPACE文件的位置，hello-world则是我们在BUILD文件中命名好的target的名字。<br>这样在bazel-bin文件夹下会产生二进制文件。</p>
+<p>4 查看依赖图<br>一个成功的build将所有的依赖都显式定义在了BUILD文件中。Bazel使用这些定义来创建项目的依赖图，这能够加速编译的过程。<br>让我们来可视化一下我们项目的依赖吧。首先，生成依赖图的一段文字描述（即在工作区根目录下运行下述指令）：<br>bazel query –nohost_deps –noimplicit_deps ‘deps(//main:hello-world)’ \ –output graph</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/16/c-standard/" rel="next" title="C++ primer标准库难点总结">
+                <i class="fa fa-chevron-left"></i> C++ primer标准库难点总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/yu.jpg" alt="决斗者">
+            
+              <p class="site-author-name" itemprop="name">决斗者</p>
+              <div class="site-description motion-element" itemprop="description">记录学习的点滴，每天一小步</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bazel入门学习"><span class="nav-number">1.</span> <span class="nav-text">Bazel入门学习</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Uncomment-and-update-the-paths-in-these-entries-to-build-the-Android-demo"><span class="nav-number"></span> <span class="nav-text">Uncomment and update the paths in these entries to build the Android demo.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#name-“androidsdk”"><span class="nav-number"></span> <span class="nav-text">name = “androidsdk”,</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#api-level-23"><span class="nav-number"></span> <span class="nav-text">api_level = 23,</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ensure-that-you-have-the-build-tools-version-below-installed-in-the"><span class="nav-number"></span> <span class="nav-text"># Ensure that you have the build_tools_version below installed in the</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SDK-manager-as-it-updates-periodically"><span class="nav-number"></span> <span class="nav-text"># SDK manager as it updates periodically.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#build-tools-version-“26-0-1”"><span class="nav-number"></span> <span class="nav-text">build_tools_version = “26.0.1”,</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Replace-with-path-to-Android-SDK-on-your-system"><span class="nav-number"></span> <span class="nav-text"># Replace with path to Android SDK on your system</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#path-“-lt-PATH-TO-SDK-gt-”"><span class="nav-number"></span> <span class="nav-text">path = “&lt;PATH_TO_SDK&gt;”,</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#name-”androidndk”"><span class="nav-number"></span> <span class="nav-text">name=”androidndk”,</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#path-”-lt-PATH-TO-NDK-gt-”"><span class="nav-number"></span> <span class="nav-text">path=”&lt;PATH_TO_NDK&gt;”,</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#This-needs-to-be-14-or-higher-to-compile-TensorFlow"><span class="nav-number"></span> <span class="nav-text"># This needs to be 14 or higher to compile TensorFlow.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Please-specify-API-level-to-gt-21-to-build-for-64-bit"><span class="nav-number"></span> <span class="nav-text"># Please specify API level to &gt;= 21 to build for 64-bit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#archtectures-or-the-Android-NDK-will-automatically-select-biggest"><span class="nav-number"></span> <span class="nav-text"># archtectures or the Android NDK will automatically select biggest</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API-level-that-it-supports-without-notice"><span class="nav-number"></span> <span class="nav-text"># API level that it supports without notice.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Note-that-the-NDK-version-is-not-the-API-level"><span class="nav-number"></span> <span class="nav-text"># Note that the NDK version is not the API level.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#api-level-14"><span class="nav-number"></span> <span class="nav-text">api_level=14)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Please-add-all-new-TensorFlow-dependencies-in-workspace-bzl"><span class="nav-number"></span> <span class="nav-text">Please add all new TensorFlow dependencies in workspace.bzl.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number"></span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow-is-a-computational-framework-primarily-for-use-in-machine"><span class="nav-number"></span> <span class="nav-text">TensorFlow is a computational framework, primarily for use in machine</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#learning-applications"><span class="nav-number"></span> <span class="nav-text">learning applications.</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">决斗者</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+   <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277620454'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277620454%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
