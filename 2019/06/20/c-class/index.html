@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="C++ primer基础篇难点总结（1~7章）最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。1 变量声明规定了变量的类型和名字；定义与之相比，申请存储空间，还可能为变量定一个初值；变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。 2 标识符由字母、">
+  <meta name="description" content="C++ Primer类设计者的工具1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一般都需要自已实现">
 <meta name="keywords" content="Java、C++、Python、TensorFlow、Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++ primer基础篇难点总结">
-<meta property="og:url" content="http://yoursite.com/2019/06/15/c-primer-base/index.html">
+<meta property="og:title" content="C++ Primer类设计者的工具">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/c-class/index.html">
 <meta property="og:site_name" content="决斗者的学习博客">
-<meta property="og:description" content="C++ primer基础篇难点总结（1~7章）最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。1 变量声明规定了变量的类型和名字；定义与之相比，申请存储空间，还可能为变量定一个初值；变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。 2 标识符由字母、">
+<meta property="og:description" content="C++ Primer类设计者的工具1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一般都需要自已实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-14T16:40:15.780Z">
+<meta property="og:updated_time" content="2019-06-20T14:29:56.049Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ primer基础篇难点总结">
-<meta name="twitter:description" content="C++ primer基础篇难点总结（1~7章）最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。1 变量声明规定了变量的类型和名字；定义与之相比，申请存储空间，还可能为变量定一个初值；变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。 2 标识符由字母、">
+<meta name="twitter:title" content="C++ Primer类设计者的工具">
+<meta name="twitter:description" content="C++ Primer类设计者的工具1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一般都需要自已实现">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/15/c-primer-base/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/c-class/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>C++ primer基础篇难点总结 | 决斗者的学习博客</title>
+  <title>C++ Primer类设计者的工具 | 决斗者的学习博客</title>
   
 
 
@@ -389,7 +389,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/c-primer-base/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/c-class/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="决斗者">
@@ -406,7 +406,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++ primer基础篇难点总结
+          <h1 class="post-title" itemprop="name headline">C++ Primer类设计者的工具
 
               
             
@@ -432,7 +432,7 @@
                 
               
 
-              <time title="创建时间：2019-06-15 00:29:23 / 修改时间：00:40:15" itemprop="dateCreated datePublished" datetime="2019-06-15T00:29:23+08:00">2019-06-15</time>
+              <time title="创建时间：2019-06-20 22:27:50 / 修改时间：22:29:56" itemprop="dateCreated datePublished" datetime="2019-06-20T22:27:50+08:00">2019-06-20</time>
             
 
             
@@ -471,21 +471,32 @@
       
 
       
-        <h4 id="C-primer基础篇难点总结（1-7章）"><a href="#C-primer基础篇难点总结（1-7章）" class="headerlink" title="C++ primer基础篇难点总结（1~7章）"></a>C++ primer基础篇难点总结（1~7章）</h4><p>最近在看C++ primer这本书的知识点，这里把1~7章基础篇的难点总结了下。<br>1 变量声明规定了变量的类型和名字；<br>定义与之相比，申请存储空间，还可能为变量定一个初值；<br>变量和声明看是微不足道，但是在多个文件中使用同一个变量，就必须将声明和定义分离。变量定义只能出现在一个文件里，而其他用到该变量的文件必须对其进行声明，却不能重复定义。</p>
-<p>2 标识符由字母、数字和下划线组成，其中必须以字母或下划线开头。标识符的长度没有限制，但是对大小写字母敏感。<br>用户自定义的标识符中不能连续出现两个下划线，也不能以下划线紧连大写字母开头。</p>
-<p>3 引用为对象起了另外一个名字，通过将声明写成&amp;d的形式来定义引用类型，<br>Int &amp;refVal=ival;  int &refVal2; //报错，引用必须被初始化<br>引用类型的初始值必须为一个对象。<br>引用本身不是一个对象，所以不能定义引用的引用，也不能定义指向引用的指针。</p>
-<p>4 解引用操作适用于那些确实指向了某个对象的有效指针。<br>空指针实现三种方式：int <em>p1=nullptr; int </em>p2=0; int *p3=0;</p>
-<p>5 如果现在多个文件之间共享const对象，必须在变量的定义之前添加extern关键字。</p>
-<p>6 constexpr类型以便由编译器来验证变量的值是否是一个常量表达式。声明constexpr的变量一定是一个常量，而且必须用常量表达式初始化。在constexpr声明中如果定义了一个指针，限定符constexpr仅对指针有效，与指针所指对象无关。<br>Constexpr int *q=nullptr; //q是一个指向整数的常量指针。</p>
-<p>7 如果r是一个引用，decltype(r)的结果是引用类型。如果表达式的内容是解引用操作，则decltype得到引用类型(decltype(*p))。decltype((i)) d加上括号，结果将是引用。</p>
-<p>8 数组知识：<br>Int a[]={0,1,2}; int a2[]=a; //不允许使用一个数组初始化另一个数组]<br>Int <em>parr[42]; //含有42个整型指针的数组<br>Int (</em>parray)[10]=&arr; //parray指向一个含有10个整数的数组<br>Int (&amp;arrRef)[10]=arr; //arrRef引用一个含有10个整数的数组<br>Int *(&amp;arry)[10]=parr; //arry是数组的引用，该数组还有10个指针</p>
-<p>9 vector的数据直接写入(迭代器默认是指针类型)：<br>for(auto beg=v.begin(),end=v.end();beg!=end;++beg){<br>    Auto &amp;r=<em>beg;<br>    r</em>=2;<br>}</p>
-<p>10 int i=42;<br>     const int <em>cpi=&i;<br>     Const int &amp;r=i;<br>     Const int &amp;r2=42;<br>     Int </em>p=cp; //错误：p的类型和cp的类型不匹配<br>     Int &amp;r3=r; //错误：r3的类型和r的类型不匹配<br>     Int &amp;r4=42；//错误：不能用字面值初始化一个非常量引用</p>
-<p>11 函数指针：bool (<em>pf)(const string &amp;,const string &amp;);<br>     Bool </em>pf(const string &amp;,const string &amp;); pf是一个返回值为bool指针的函数</p>
-<p>12 类中的构造函数不能被声明为const，但是字面常量类的构造函数可以是constexpr函数</p>
-<p>13 定义在public说明符之后的成员在整个程序可被访问，public成员定义类的接口。<br>     定义在private说明符之后的成员可以被类的成员函数访问，但不能被使用该类的<br>代码访问，private部分封装了类的实现细节。<br>    使用class和struct类定义唯一的区别就是默认的访问权限。</p>
-<p>14 友元：友元声明只能出现在类定义的内部，但是在类内部出现的具体位置不限。</p>
-<p>15 explicit关键字只允许出现在类内的构造函数声明处。<br>     Sales_data item1(null_book); //正确，直接初始化<br>     Sales_data item2=null_book; //错误，不能将explicit构造函数用于拷贝的初始化过程</p>
+        <h4 id="C-Primer类设计者的工具"><a href="#C-Primer类设计者的工具" class="headerlink" title="C++ Primer类设计者的工具"></a>C++ Primer类设计者的工具</h4><p>1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。<br>       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。<br>当类中有指针类数据成员时，一般都需要自已实现类的拷贝控制。通常有两种处理策略：一是定义值型类，每个类保留一份指针指向的对象的拷贝；另一种更常用的策略是使用智能指针(smart pointer)，其通用技术是采用引用计数(reference count)来实现共享指针指向的对象。<br>       我们知道C++中变量初始化有两种形式：直接初始化和拷贝初始化。直接初始化将初始化放在圆括号中，而拷贝初始化使用=符号。对于内置类型，这两者基本上没有区别。但对于类类型，两种方式是有区别的：直接初始化直接调用与实参匹配的构造函数；而拷贝初始化总是调用拷贝构造函数，具体而言，就是拷贝初始化首先使用指定构造函数创建一个临时对象，然后用拷贝构造函数将那个临时对象拷贝到正在创建的对象。<br>       支持拷贝初始化主要是为了与C的用法兼容。当情况允许时，可以允许编译器跳过拷贝构造函数直接创建对象，但编译器没有义务这样做。注：事实上大多数编译器都跳过了拷贝构造函数，因为这完全可以跳过。<br>我们知道可以用表示容量的单个参数来初始化容器，容器的这种构造方式使用了默认构造函数和拷贝构造函数。例如：<br>   vector<string> svec(5);<br>编译器首先使用string的默认构造函数创建一个临时值来初始化svec，然后使用拷贝构造函数将临时对象拷贝到svec的每个元素。示例代码如下</string></p>
+<p>#include <iostream></iostream></p>
+<p>#include <vector><br>using namespace std;</vector></p>
+<p>class Test {<br>public:<br>    Test() {<br>        cout&lt;&lt;”Contructor”&lt;&lt;endl;<br>    }<br>    Test(const Test&amp; t) {<br>        cout&lt;&lt;”copy Contructor”&lt;&lt;endl;<br>    }<br>};</p>
+<p>int main() {<br>    vector<test> tvec(5);<br>    return 0;<br>}</test></p>
+<p>输出结果为：（MinGW 2.05和VC6.0）<br>Contructor<br>copy Contructor<br>copy Contructor<br>copy Contructor<br>copy Contructor<br>copy Contructor<br>        对于元素为类类型的数组，可以使用数组初始化列表来提供显示元素初始化。此时，使用拷贝初始化来初始化每个元素。根据指定值创建适当类型的元素，然后用拷贝构造函数将该值拷贝到相应元素。当然，同前面一样，是否跳过拷贝构造函数取决于编译器（事实上，大多数编译器跳过了这步）。<br>       拷贝构造函数的形参是一个类类型引用（否则，参数本身就需要过拷贝构造函数了），但一般情况下，我们使用const修饰。并且，一般不应该设置为explicit。有时需要禁止拷贝类，例如，iostream类就不允许拷贝。这时，应当显示声明拷贝构造函数为private，此时可以不定义该函数。若声明为private且进行了函数定义，则类的友元和成员仍然可以进行拷贝。<br>合成的拷贝构造函数：<br>        如果我们没有定义拷贝构造函数，则编译器会自动生成一个，把这个自动生成的拷贝构造函数叫合成的拷贝构造函数（Synthesized Copy Constructor）。合成的拷贝构造函数执行逐个成员初始化，将新对象初始化为原对象的副本。如果成员是内置类型，则执行位拷贝；如果成员是类类型，则调用相应的拷贝构造函数；如果成员是数组类型，则分别对每个数组元素进制拷贝。</p>
+<p>2 标准库容器、string和shared_ptr类支持移动也支持拷贝，IO类和unique_ptr类可以移动但不能拷贝。</p>
+<p>3 int i=42;<br>   Int &amp;r=i;<br>   Int &amp;&amp;rr=I; //错误不能将一个右值引用绑定到一个左值上<br>   Int &amp;r2=I<em>42;  //错误，I</em>42是一个右值<br>   Const int &amp;r3=I<em>42;//错误，可以将const引用绑定到一个右值上<br>   Int &amp;&amp;rr2=I</em>42; 将rr2绑定到乘法结果上<br>   虽然不能将一个右值引用直接绑定到一个左值上，但我们可以显示将一个左值转换对应右值引用类型。可以调用一个名为move的新标准库函数来获得绑定到左值上的右值引用。<br>   Int &amp;&amp;rr3=std::move(rr2); 在调用move之后，我们不能对移后原对象的值做任何假设。</p>
+<p>4 区分移动和拷贝的重载函数通常有一个版本接受一个const T&amp;，而另一个版本接受一个T&amp;&amp;。</p>
+<p>5 引用限定符：<br>  class Foo{<br>     Public:<br>         Foo &amp;operator=(const Foo&amp;) &amp;; //只能向可修改的左值赋值<br>  }；<br>  Foo &amp;Foo::operator=(const Foo &amp;rhs) &amp;<br>  {<br>     Return *this;<br>  }</p>
+<p>6 成员访问运算符：<br>   Class StrBlobPtr{<br>    Std::string &amp; operator<em>() const{<br>        Auto p=check(curr, “dereference past end”);<br>        Return (</em>p)[curr];<br>     }</p>
+<pre><code> Std::string* operator-&gt;() const{
+   Return &amp; this-&gt;operator*(); 
+}
+</code></pre><p>  }</p>
+<p>7 重载的函数与function<br>  我们不能（直接）将重载函数的名字存入function类型的对象中；<br>  Int add(int i,int j){ return i+j;}<br>  Sales_data add(const Sales_data &amp;, const Sales_data&amp;);<br>  Map&lt;string,function&lt;int(int,int)&gt;&gt; binops;<br>  Binops.insert({“+”,add}); //错误，不知是哪个add<br>  Int (*fp)(int,int)=add;<br>  Binops.insert({“+”,fp});//正确，fp指向一个正确的add版本</p>
+<p>8 C++11新标准提供一种防止继承发生的方法，在类名跟一个关键词final</p>
+<p>9 如果派生类（既内层作用域）的成员与基类（既外层作用域）的某个成员同名，派生类将在作用域内隐藏该基类成员。即使派生类成员和基类成员的形参列表不一致，基类成员也仍然被隐藏；<br>  Struct Base{<br>    Int menfcn();<br>  }<br>  Struct Derived:Base{<br>   Int memfcn(int);<br>  }<br>  Derived d;Base b;<br>  b.memfcn();<br>  d.memfcn(10);<br>  d.memfcn(); //错误，参数列表为空的memfcn被隐藏了<br>  d.Base::memfcn();  //正确，调用Base::memfcn</p>
+<p>10 不存在从基类向派生类的隐式类型转换：<br>     Quote base;<br>     Bulk_quote* bulkP=&base;  //错误，不能将基类转换成派生类<br>     Bull_quote&amp; bulkRef=base;  //错误，不能将基类转换成派生类</p>
+<p>11 继承关系类型之间的转换规则：<br>     从派生类向基类的类型转换只对指针或引用类型有效；<br>     基类向派生类不存在隐式类型转换；<br>     和任何其他成员一样，派生类向基类的类型转换也可能会由于访问受限而变得不可行；</p>
+<p>12 如果派生类的成员与基类的某个成员同名，则派生类将在其作用域内隐藏基类成员。即使派生类成员和基类成员的形参列表不一致，基类成员仍然会被隐藏掉；<br>     Struct Base{<br>        Int memfcn();<br>     }<br>     Struct Derived:Base{<br>        Int memfcn(int);<br>     }<br>     Derived d;Base b;<br>     b.memfcn();<br>     d.memfcn(10);<br>     d.menfcn();   //错误，参数列表为空的memfcn被隐藏了<br>     d.Base::memfcn();</p>
+<p>13 函数模板：template<typename t><br>     Int compare(const T &amp;v1,const T &amp;v2){<br>    }</typename></p>
+<pre><code>Template&lt;typename T&gt; T foo(T *p){
+  T tmp=*p;
+  Return tmp;
+</code></pre><p>   }</p>
 
       
     </div>
@@ -516,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/07/ffmpeg-compile/" rel="next" title="FFmpeg源码Android版本编译">
-                <i class="fa fa-chevron-left"></i> FFmpeg源码Android版本编译
+              <a href="/2019/06/19/bazel-start/" rel="next" title="Bazel入门学习">
+                <i class="fa fa-chevron-left"></i> Bazel入门学习
               </a>
             
           </div>
@@ -525,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/16/c-standard/" rel="prev" title="C++ primer标准库难点总结">
-                C++ primer标准库难点总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -641,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-primer基础篇难点总结（1-7章）"><span class="nav-number">1.</span> <span class="nav-text">C++ primer基础篇难点总结（1~7章）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-Primer类设计者的工具"><span class="nav-number">1.</span> <span class="nav-text">C++ Primer类设计者的工具</span></a></li></ol></div>
             
 
           </div>
