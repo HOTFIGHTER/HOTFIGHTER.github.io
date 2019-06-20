@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="决斗者的学习博客">
 <meta property="og:description" content="C++ Primer类设计者的工具1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一般都需要自已实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-20T14:29:56.049Z">
+<meta property="og:updated_time" content="2019-06-20T14:35:15.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Primer类设计者的工具">
 <meta name="twitter:description" content="C++ Primer类设计者的工具1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一般都需要自已实现">
@@ -432,7 +432,7 @@
                 
               
 
-              <time title="创建时间：2019-06-20 22:27:50 / 修改时间：22:29:56" itemprop="dateCreated datePublished" datetime="2019-06-20T22:27:50+08:00">2019-06-20</time>
+              <time title="创建时间：2019-06-20 22:27:50 / 修改时间：22:35:15" itemprop="dateCreated datePublished" datetime="2019-06-20T22:27:50+08:00">2019-06-20</time>
             
 
             
@@ -472,8 +472,8 @@
 
       
         <h4 id="C-Primer类设计者的工具"><a href="#C-Primer类设计者的工具" class="headerlink" title="C++ Primer类设计者的工具"></a>C++ Primer类设计者的工具</h4><p>1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。<br>       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。<br>当类中有指针类数据成员时，一般都需要自已实现类的拷贝控制。通常有两种处理策略：一是定义值型类，每个类保留一份指针指向的对象的拷贝；另一种更常用的策略是使用智能指针(smart pointer)，其通用技术是采用引用计数(reference count)来实现共享指针指向的对象。<br>       我们知道C++中变量初始化有两种形式：直接初始化和拷贝初始化。直接初始化将初始化放在圆括号中，而拷贝初始化使用=符号。对于内置类型，这两者基本上没有区别。但对于类类型，两种方式是有区别的：直接初始化直接调用与实参匹配的构造函数；而拷贝初始化总是调用拷贝构造函数，具体而言，就是拷贝初始化首先使用指定构造函数创建一个临时对象，然后用拷贝构造函数将那个临时对象拷贝到正在创建的对象。<br>       支持拷贝初始化主要是为了与C的用法兼容。当情况允许时，可以允许编译器跳过拷贝构造函数直接创建对象，但编译器没有义务这样做。注：事实上大多数编译器都跳过了拷贝构造函数，因为这完全可以跳过。<br>我们知道可以用表示容量的单个参数来初始化容器，容器的这种构造方式使用了默认构造函数和拷贝构造函数。例如：<br>   vector<string> svec(5);<br>编译器首先使用string的默认构造函数创建一个临时值来初始化svec，然后使用拷贝构造函数将临时对象拷贝到svec的每个元素。示例代码如下</string></p>
-<p>#include <iostream></iostream></p>
-<p>#include <vector><br>using namespace std;</vector></p>
+<p>#include<iostream></iostream></p>
+<p>#include<vector><br>using namespace std;</vector></p>
 <p>class Test {<br>public:<br>    Test() {<br>        cout&lt;&lt;”Contructor”&lt;&lt;endl;<br>    }<br>    Test(const Test&amp; t) {<br>        cout&lt;&lt;”copy Contructor”&lt;&lt;endl;<br>    }<br>};</p>
 <p>int main() {<br>    vector<test> tvec(5);<br>    return 0;<br>}</test></p>
 <p>输出结果为：（MinGW 2.05和VC6.0）<br>Contructor<br>copy Contructor<br>copy Contructor<br>copy Contructor<br>copy Contructor<br>copy Contructor<br>        对于元素为类类型的数组，可以使用数组初始化列表来提供显示元素初始化。此时，使用拷贝初始化来初始化每个元素。根据指定值创建适当类型的元素，然后用拷贝构造函数将该值拷贝到相应元素。当然，同前面一样，是否跳过拷贝构造函数取决于编译器（事实上，大多数编译器跳过了这步）。<br>       拷贝构造函数的形参是一个类类型引用（否则，参数本身就需要过拷贝构造函数了），但一般情况下，我们使用const修饰。并且，一般不应该设置为explicit。有时需要禁止拷贝类，例如，iostream类就不允许拷贝。这时，应当显示声明拷贝构造函数为private，此时可以不定义该函数。若声明为private且进行了函数定义，则类的友元和成员仍然可以进行拷贝。<br>合成的拷贝构造函数：<br>        如果我们没有定义拷贝构造函数，则编译器会自动生成一个，把这个自动生成的拷贝构造函数叫合成的拷贝构造函数（Synthesized Copy Constructor）。合成的拷贝构造函数执行逐个成员初始化，将新对象初始化为原对象的副本。如果成员是内置类型，则执行位拷贝；如果成员是类类型，则调用相应的拷贝构造函数；如果成员是数组类型，则分别对每个数组元素进制拷贝。</p>
@@ -481,22 +481,14 @@
 <p>3 int i=42;<br>   Int &amp;r=i;<br>   Int &amp;&amp;rr=I; //错误不能将一个右值引用绑定到一个左值上<br>   Int &amp;r2=I<em>42;  //错误，I</em>42是一个右值<br>   Const int &amp;r3=I<em>42;//错误，可以将const引用绑定到一个右值上<br>   Int &amp;&amp;rr2=I</em>42; 将rr2绑定到乘法结果上<br>   虽然不能将一个右值引用直接绑定到一个左值上，但我们可以显示将一个左值转换对应右值引用类型。可以调用一个名为move的新标准库函数来获得绑定到左值上的右值引用。<br>   Int &amp;&amp;rr3=std::move(rr2); 在调用move之后，我们不能对移后原对象的值做任何假设。</p>
 <p>4 区分移动和拷贝的重载函数通常有一个版本接受一个const T&amp;，而另一个版本接受一个T&amp;&amp;。</p>
 <p>5 引用限定符：<br>  class Foo{<br>     Public:<br>         Foo &amp;operator=(const Foo&amp;) &amp;; //只能向可修改的左值赋值<br>  }；<br>  Foo &amp;Foo::operator=(const Foo &amp;rhs) &amp;<br>  {<br>     Return *this;<br>  }</p>
-<p>6 成员访问运算符：<br>   Class StrBlobPtr{<br>    Std::string &amp; operator<em>() const{<br>        Auto p=check(curr, “dereference past end”);<br>        Return (</em>p)[curr];<br>     }</p>
-<pre><code> Std::string* operator-&gt;() const{
-   Return &amp; this-&gt;operator*(); 
-}
-</code></pre><p>  }</p>
+<p>6 成员访问运算符：<br>   Class StrBlobPtr{<br>    Std::string &amp; operator<em>() const{<br>        Auto p=check(curr, “dereference past end”);<br>        Return (</em>p)[curr];<br>     }<br>    Std::string<em> operator-&gt;() const{<br>       Return &amp; this-&gt;operator</em>();<br>    }<br>  }</p>
 <p>7 重载的函数与function<br>  我们不能（直接）将重载函数的名字存入function类型的对象中；<br>  Int add(int i,int j){ return i+j;}<br>  Sales_data add(const Sales_data &amp;, const Sales_data&amp;);<br>  Map&lt;string,function&lt;int(int,int)&gt;&gt; binops;<br>  Binops.insert({“+”,add}); //错误，不知是哪个add<br>  Int (*fp)(int,int)=add;<br>  Binops.insert({“+”,fp});//正确，fp指向一个正确的add版本</p>
 <p>8 C++11新标准提供一种防止继承发生的方法，在类名跟一个关键词final</p>
 <p>9 如果派生类（既内层作用域）的成员与基类（既外层作用域）的某个成员同名，派生类将在作用域内隐藏该基类成员。即使派生类成员和基类成员的形参列表不一致，基类成员也仍然被隐藏；<br>  Struct Base{<br>    Int menfcn();<br>  }<br>  Struct Derived:Base{<br>   Int memfcn(int);<br>  }<br>  Derived d;Base b;<br>  b.memfcn();<br>  d.memfcn(10);<br>  d.memfcn(); //错误，参数列表为空的memfcn被隐藏了<br>  d.Base::memfcn();  //正确，调用Base::memfcn</p>
 <p>10 不存在从基类向派生类的隐式类型转换：<br>     Quote base;<br>     Bulk_quote* bulkP=&base;  //错误，不能将基类转换成派生类<br>     Bull_quote&amp; bulkRef=base;  //错误，不能将基类转换成派生类</p>
 <p>11 继承关系类型之间的转换规则：<br>     从派生类向基类的类型转换只对指针或引用类型有效；<br>     基类向派生类不存在隐式类型转换；<br>     和任何其他成员一样，派生类向基类的类型转换也可能会由于访问受限而变得不可行；</p>
 <p>12 如果派生类的成员与基类的某个成员同名，则派生类将在其作用域内隐藏基类成员。即使派生类成员和基类成员的形参列表不一致，基类成员仍然会被隐藏掉；<br>     Struct Base{<br>        Int memfcn();<br>     }<br>     Struct Derived:Base{<br>        Int memfcn(int);<br>     }<br>     Derived d;Base b;<br>     b.memfcn();<br>     d.memfcn(10);<br>     d.menfcn();   //错误，参数列表为空的memfcn被隐藏了<br>     d.Base::memfcn();</p>
-<p>13 函数模板：template<typename t><br>     Int compare(const T &amp;v1,const T &amp;v2){<br>    }</typename></p>
-<pre><code>Template&lt;typename T&gt; T foo(T *p){
-  T tmp=*p;
-  Return tmp;
-</code></pre><p>   }</p>
+<p>13 函数模板：template<typename t><br>     Int compare(const T &amp;v1,const T &amp;v2){<br>    }<br>     Template<typename t> T foo(T <em>p){<br>      T tmp=</em>p;<br>      Return tmp;<br>   }</typename></typename></p>
 
       
     </div>
