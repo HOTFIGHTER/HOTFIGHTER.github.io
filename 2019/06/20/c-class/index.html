@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="C++ Primer类设计者的工具1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一般都需要自已实现">
+  <meta name="description" content="C++ Primer类设计者的工具（13~16章）1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一">
 <meta name="keywords" content="Java、C++、Python、TensorFlow、Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ Primer类设计者的工具">
 <meta property="og:url" content="http://yoursite.com/2019/06/20/c-class/index.html">
 <meta property="og:site_name" content="决斗者的学习博客">
-<meta property="og:description" content="C++ Primer类设计者的工具1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一般都需要自已实现">
+<meta property="og:description" content="C++ Primer类设计者的工具（13~16章）1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-20T14:35:15.956Z">
+<meta property="og:updated_time" content="2019-06-25T16:20:21.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Primer类设计者的工具">
-<meta name="twitter:description" content="C++ Primer类设计者的工具1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一般都需要自已实现">
+<meta name="twitter:description" content="C++ Primer类设计者的工具（13~16章）1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。当类中有指针类数据成员时，一">
 
 
 
@@ -432,12 +432,24 @@
                 
               
 
-              <time title="创建时间：2019-06-20 22:27:50 / 修改时间：22:35:15" itemprop="dateCreated datePublished" datetime="2019-06-20T22:27:50+08:00">2019-06-20</time>
+              <time title="创建时间：2019-06-20 22:27:50" itemprop="dateCreated datePublished" datetime="2019-06-20T22:27:50+08:00">2019-06-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-26 00:20:21" itemprop="dateModified" datetime="2019-06-26T00:20:21+08:00">2019-06-26</time>
               
             
           </span>
@@ -471,7 +483,7 @@
       
 
       
-        <h4 id="C-Primer类设计者的工具"><a href="#C-Primer类设计者的工具" class="headerlink" title="C++ Primer类设计者的工具"></a>C++ Primer类设计者的工具</h4><p>1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。<br>       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。<br>当类中有指针类数据成员时，一般都需要自已实现类的拷贝控制。通常有两种处理策略：一是定义值型类，每个类保留一份指针指向的对象的拷贝；另一种更常用的策略是使用智能指针(smart pointer)，其通用技术是采用引用计数(reference count)来实现共享指针指向的对象。<br>       我们知道C++中变量初始化有两种形式：直接初始化和拷贝初始化。直接初始化将初始化放在圆括号中，而拷贝初始化使用=符号。对于内置类型，这两者基本上没有区别。但对于类类型，两种方式是有区别的：直接初始化直接调用与实参匹配的构造函数；而拷贝初始化总是调用拷贝构造函数，具体而言，就是拷贝初始化首先使用指定构造函数创建一个临时对象，然后用拷贝构造函数将那个临时对象拷贝到正在创建的对象。<br>       支持拷贝初始化主要是为了与C的用法兼容。当情况允许时，可以允许编译器跳过拷贝构造函数直接创建对象，但编译器没有义务这样做。注：事实上大多数编译器都跳过了拷贝构造函数，因为这完全可以跳过。<br>我们知道可以用表示容量的单个参数来初始化容器，容器的这种构造方式使用了默认构造函数和拷贝构造函数。例如：<br>   vector<string> svec(5);<br>编译器首先使用string的默认构造函数创建一个临时值来初始化svec，然后使用拷贝构造函数将临时对象拷贝到svec的每个元素。示例代码如下</string></p>
+        <h4 id="C-Primer类设计者的工具（13-16章）"><a href="#C-Primer类设计者的工具（13-16章）" class="headerlink" title="C++ Primer类设计者的工具（13~16章）"></a>C++ Primer类设计者的工具（13~16章）</h4><p>1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。<br>       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。<br>当类中有指针类数据成员时，一般都需要自已实现类的拷贝控制。通常有两种处理策略：一是定义值型类，每个类保留一份指针指向的对象的拷贝；另一种更常用的策略是使用智能指针(smart pointer)，其通用技术是采用引用计数(reference count)来实现共享指针指向的对象。<br>       我们知道C++中变量初始化有两种形式：直接初始化和拷贝初始化。直接初始化将初始化放在圆括号中，而拷贝初始化使用=符号。对于内置类型，这两者基本上没有区别。但对于类类型，两种方式是有区别的：直接初始化直接调用与实参匹配的构造函数；而拷贝初始化总是调用拷贝构造函数，具体而言，就是拷贝初始化首先使用指定构造函数创建一个临时对象，然后用拷贝构造函数将那个临时对象拷贝到正在创建的对象。<br>       支持拷贝初始化主要是为了与C的用法兼容。当情况允许时，可以允许编译器跳过拷贝构造函数直接创建对象，但编译器没有义务这样做。注：事实上大多数编译器都跳过了拷贝构造函数，因为这完全可以跳过。<br>我们知道可以用表示容量的单个参数来初始化容器，容器的这种构造方式使用了默认构造函数和拷贝构造函数。例如：<br>   vector<string> svec(5);<br>编译器首先使用string的默认构造函数创建一个临时值来初始化svec，然后使用拷贝构造函数将临时对象拷贝到svec的每个元素。示例代码如下</string></p>
 <p>#include<iostream></iostream></p>
 <p>#include<vector><br>using namespace std;</vector></p>
 <p>class Test {<br>public:<br>    Test() {<br>        cout&lt;&lt;”Contructor”&lt;&lt;endl;<br>    }<br>    Test(const Test&amp; t) {<br>        cout&lt;&lt;”copy Contructor”&lt;&lt;endl;<br>    }<br>};</p>
@@ -528,6 +540,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/26/c-senior/" rel="prev" title="C++高级主题">
+                C++高级主题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -598,7 +614,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -640,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-Primer类设计者的工具"><span class="nav-number">1.</span> <span class="nav-text">C++ Primer类设计者的工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-Primer类设计者的工具（13-16章）"><span class="nav-number">1.</span> <span class="nav-text">C++ Primer类设计者的工具（13~16章）</span></a></li></ol></div>
             
 
           </div>

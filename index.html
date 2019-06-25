@@ -389,6 +389,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/c-senior/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="决斗者">
+      <meta itemprop="description" content="记录学习的点滴，每天一小步">
+      <meta itemprop="image" content="/images/yu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="决斗者的学习博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/26/c-senior/" class="post-title-link" itemprop="url">C++高级主题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-26 00:16:19 / 修改时间：00:20:21" itemprop="dateCreated datePublished" datetime="2019-06-26T00:16:19+08:00">2019-06-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="C-高级主题（17-19章）"><a href="#C-高级主题（17-19章）" class="headerlink" title="C++高级主题（17~19章）"></a>C++高级主题（17~19章）</h4><p>1 函数指针和实参推断<br>   Template<typename t> int compare<const t&,const t&><br>   Int (*pf1)(const int &amp;,const int &amp;)=compare;</const></typename></p>
+<p>2 我们通常见到的引用（int &amp;a=b;）可以称之为左值引用，而右值引用则是int &amp;&amp;a的形式。将左值也绑定到右值引用上，<br>我们可以显式的使用move将一个左值转换为对用的右值引用类型。<br>int a = 1<br>int&amp;&amp; b = std::move(a);</p>
+<p>3 remove_reference用于移除类型的引用，返回原始类型。</p>
+<p>4 tuple&lt;T1,T2,…Tn&gt; t; t是一个tuple，成员数为n,第I个成员类型为Ti，所有成员都进行初始化。<br>   Get<i>(t) 返回t的第I个数据成员的引用；如果t是一个左值，结果是一个左值引用；<br>   Tuple_size<tupletype>::value 一个类模板，可以通过一个tuple类型初始化。它有一个名为value的public constexpr<br>   static数据成员，类型为size_t,表示给定tuple类型中成员的数量。</tupletype></i></p>
+<p>5 typied运算符，它允许程序向表达式提问：你的对象是什么类型？</p>
+<p>6 数据成员指针：const string Screen::<em>pdata; 是指向一个常量（非常量）Screen对象的string成员。<br>  Screen myScreen, </em>pScreen =&myScreen;<br>  Auto s=myScreen.<em>pdata;<br>  s=pScreen-&gt;</em>pdata;</p>
+<p>7 如在定义局部变量时不赋值的话,则对静态变量来说,编译时自动赋初值0或空字符。而对自动变量来说,如果不赋值,<br>它的值是一个不确定的值。</p>
+<p>8 没有初始化的指针为空，不指向任何对象，也不调用构造函数。</p>
+<p>9 dynamic_cast将一个基类对象指针（或引用）cast到继承类指针，dynamic_cast会根据基类指针是否真正指向继承类指针来做<br>相应处理， 即会作一定的判断。 对指针进行dynamic_cast，失败返回null，成功返回正常cast后的对象指针； 对引用进行<br>dynamic_cast，失败抛出一个异常，成功返回正常cast后的对象引用。<br>reinterpret_cast这个转换是最“不安全”的，两个没有任何关系的类指针之间转换都可以用这个转换实现。<br>static_cast静态转换是最接近于C风格转换，很多时候都需要程序员自身去判断转换是否安全。<br>const_cast这个转换好理解，可以将常量转成非常量。</p>
+<p>10 只有在使用时才为该类型变量分配内存的存储类是属于动态存储类型。<br>在动态存储去中一般存放以下三类参数：<br>1.函数的形式参数【在调用函数时给形参分配存储空间】<br>2.函数中定义的局部变量（未加static类型的）—》自动变量auto<br>3.函数调用时的现场保护和返回地址—》寄存器变量register<br>自动变量和寄存器变量在函数内的可见性和存在性是一致的，即在函数执行期间，变量是存在的，且可以被引用。<br>在函数外的可见性和存在性也是一致的，即离开函数后，变量不存在，不能被引用。<br>static和extern所说明的变量是静态存储类型的变量，程序运行时系统就会为该类变量分配存储单元。 </p>
+<p>11 可以调用shrink_to_fit来要求vector将超出当前大小的多余内存退回给系统。然而：调用shrink_to_fit只是一个请求，<br>标准库并不保证退还内存。</p>
+<p>12 嵌套类的名字在外层类作用域中是可见的，在外层类作用域之外是不可见的。嵌套类名字不会和别的作用域中的同一个名字冲突。</p>
+<p>13 链接指示：extern “C”， C++有时调用C语言编写的函数：<br>     Extern “C” size_t strlen(const char <em>);<br>     Extern “C”{<br>      Int strcmp(const char</em>,const char<em>);<br>      Char </em>strcat(char<em>,const char</em>);<br>    }</p>
+<p>14 C语言不支持函数重载，一个C链接指示只能用于说明一组重载函数的某一个：<br>    Extern “C” double calc(double);<br>    Extern SmallInt calc(const SmallInt&amp;);<br>    Extern BigNum calc(const BigNum&amp;);</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/c-class/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -434,12 +590,24 @@
                 
               
 
-              <time title="创建时间：2019-06-20 22:27:50 / 修改时间：22:35:15" itemprop="dateCreated datePublished" datetime="2019-06-20T22:27:50+08:00">2019-06-20</time>
+              <time title="创建时间：2019-06-20 22:27:50" itemprop="dateCreated datePublished" datetime="2019-06-20T22:27:50+08:00">2019-06-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-26 00:20:21" itemprop="dateModified" datetime="2019-06-26T00:20:21+08:00">2019-06-26</time>
               
             
           </span>
@@ -475,7 +643,7 @@
       
         
           
-            <h4 id="C-Primer类设计者的工具"><a href="#C-Primer类设计者的工具" class="headerlink" title="C++ Primer类设计者的工具"></a>C++ Primer类设计者的工具</h4><p>1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。<br>       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。<br>当类中有指针类数据成员时，一般都需要自已实现类的拷贝控制。通常有两种处理策略：一是定义值型类，每个类保留一份指针指向的对象的拷贝；另一种更常用的策略是使用智能指针(smart pointer)，其通用技术是采用引用计数(reference count)来实现共享指针指向的对象。<br>       我们知道C++中变量初始化有两种形式：直接初始化和拷贝初始化。直接初始化将初始化放在圆括号中，而拷贝初始化使用=符号。对于内置类型，这两者基本上没有区别。但对于类类型，两种方式是有区别的：直接初始化直接调用与实参匹配的构造函数；而拷贝初始化总是调用拷贝构造函数，具体而言，就是拷贝初始化首先使用指定构造函数创建一个临时对象，然后用拷贝构造函数将那个临时对象拷贝到正在创建的对象。<br>       支持拷贝初始化主要是为了与C的用法兼容。当情况允许时，可以允许编译器跳过拷贝构造函数直接创建对象，但编译器没有义务这样做。注：事实上大多数编译器都跳过了拷贝构造函数，因为这完全可以跳过。<br>我们知道可以用表示容量的单个参数来初始化容器，容器的这种构造方式使用了默认构造函数和拷贝构造函数。例如：<br>   vector<string> svec(5);<br>编译器首先使用string的默认构造函数创建一个临时值来初始化svec，然后使用拷贝构造函数将临时对象拷贝到svec的每个元素。示例代码如下</string></p>
+            <h4 id="C-Primer类设计者的工具（13-16章）"><a href="#C-Primer类设计者的工具（13-16章）" class="headerlink" title="C++ Primer类设计者的工具（13~16章）"></a>C++ Primer类设计者的工具（13~16章）</h4><p>1 C++类中有四个不可或缺的部分，那就是构造函数、拷贝构造函数、赋值操作符和析构函数。如果类中没有定义这些函数，那么编译器将为类自动生成这些函数。当然，你也可以通过private控制策略限定不使用拷贝构造函数和赋值操作符。<br>       其中，拷贝构造函数、赋值操作符和析构函数总称为拷贝控制（copy control）。<br>当类中有指针类数据成员时，一般都需要自已实现类的拷贝控制。通常有两种处理策略：一是定义值型类，每个类保留一份指针指向的对象的拷贝；另一种更常用的策略是使用智能指针(smart pointer)，其通用技术是采用引用计数(reference count)来实现共享指针指向的对象。<br>       我们知道C++中变量初始化有两种形式：直接初始化和拷贝初始化。直接初始化将初始化放在圆括号中，而拷贝初始化使用=符号。对于内置类型，这两者基本上没有区别。但对于类类型，两种方式是有区别的：直接初始化直接调用与实参匹配的构造函数；而拷贝初始化总是调用拷贝构造函数，具体而言，就是拷贝初始化首先使用指定构造函数创建一个临时对象，然后用拷贝构造函数将那个临时对象拷贝到正在创建的对象。<br>       支持拷贝初始化主要是为了与C的用法兼容。当情况允许时，可以允许编译器跳过拷贝构造函数直接创建对象，但编译器没有义务这样做。注：事实上大多数编译器都跳过了拷贝构造函数，因为这完全可以跳过。<br>我们知道可以用表示容量的单个参数来初始化容器，容器的这种构造方式使用了默认构造函数和拷贝构造函数。例如：<br>   vector<string> svec(5);<br>编译器首先使用string的默认构造函数创建一个临时值来初始化svec，然后使用拷贝构造函数将临时对象拷贝到svec的每个元素。示例代码如下</string></p>
 <p>#include<iostream></iostream></p>
 <p>#include<vector><br>using namespace std;</vector></p>
 <p>class Test {<br>public:<br>    Test() {<br>        cout&lt;&lt;”Contructor”&lt;&lt;endl;<br>    }<br>    Test(const Test&amp; t) {<br>        cout&lt;&lt;”copy Contructor”&lt;&lt;endl;<br>    }<br>};</p>
@@ -1990,7 +2158,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
